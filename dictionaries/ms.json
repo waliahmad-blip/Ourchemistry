@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Laman Utama",
+    "science": "Sains",
+    "bond": "Makmal Ikatan",
+    "voices": "DNA Suara",
+    "faq": "Soalan",
+    "waitlist": "Sertai",
+    "quiz": "Kuiz"
+  },
+  "hero": {
+    "kicker": "Temu Janji dan Perkahwinan berkuasa AI",
+    "title": "Sains Kita",
+    "sub": "Jatuh cinta pada suara, nilai, dan kewujudan. Bukan foto.",
+    "cta": "Sertai senarai menunggu",
+    "secondary": "Lihat sains",
+    "rot": [
+      "percikan",
+      "fusi",
+      "resonans"
+    ]
+  },
+  "features": {
+    "anti": "Penemuan Anti-Profil",
+    "antiSub": "Tiada foto untuk 3 interaksi pertama. Padan melalui suara, nilai, resonans.",
+    "trial": "Cuba Ikatan 7 Hari",
+    "trialSub": "Promp harian tersusun selama 7 hari tepat.",
+    "matrimony": "Perkahwinan Buta Berganda",
+    "matrimonySub": "Untuk komitmen serius: anda nyatakan niat, kami lindungi privasi anda."
+  },
+  "bond": {
+    "title": "Makmal Ikatan",
+    "sub": "Setiap pendaftaran menaikkan cas global. Pada 100 peratus, percikan pertama menyala di seluruh dunia.",
+    "spark": "Percikan",
+    "fusion": "Fusi",
+    "resonance": "Resonans"
+  },
+  "voice": {
+    "title": "DNA Suara",
+    "sub": "Sebut tiga perkataan apa sahaja. Kami ubah suara anda menjadi simbol unik.",
+    "record": "Rakam 15 saat",
+    "capture": "DNA suara dirakam",
+    "onDevice": "DNA Suara di Peranti",
+    "onDeviceSub": "Suara anda diproses pada telefon anda. Hanya tandatangan matematik keluar peranti."
+  },
+  "waitlist": {
+    "title": "Sertai senarai menunggu",
+    "sub": "Jadilah antara percikan pertama. Kimia asas percuma selama-lamanya.",
+    "email": "E-mel anda",
+    "submit": "Simpan percikan saya",
+    "success": "Anda dalam senarai. Dunia sedang dicas.",
+    "count": "orang dalam senarai menunggu"
+  },
+  "faq": {
+    "title": "Soalan bagus",
+    "when": "Bila anda dilancarkan?",
+    "whenA": "Percikan pertama: 14 Februari 2027.",
+    "free": "Adakah ia percuma?",
+    "freeA": "Kimia asas percuma selama-lamanya.",
+    "countries": "Negara mana dahulu?",
+    "countriesA": "Kami menyala di mana cas tertinggi.",
+    "trialEnd": "Bagaimana cuba ikatan tamat?",
+    "trialEndA": "Hari ke-7, kedua-duanya pilih secara senyap, didedahkan bersama."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Tanya Catalyst apa sahaja",
+    "send": "Hantar"
+  },
+  "countdown": {
+    "days": "Hari",
+    "hrs": "Jam",
+    "min": "Minit",
+    "sec": "Saat"
+  },
+  "quiz": {
+    "title": "Elemen apakah anda?",
+    "share": "Kongsi elemen saya ✦",
+    "again": "Cuba lagi ↺",
+    "questions": [
+      {
+        "q": "Ikatan pertama ideal anda seperti…",
+        "a": [
+          "Nota suara jam 2 pagi",
+          "Berjalan dalam diam",
+          "Bertukar senarai main",
+          "Memasak bersama"
+        ]
+      },
+      {
+        "q": "Apa yang paling penting?",
+        "a": [
+          "Kedalaman",
+          "Humor",
+          "Iman",
+          "Cita-cita"
+        ]
+      },
+      {
+        "q": "Malam yang sempurna ialah…",
+        "a": [
+          "Melihat bintang",
+          "Perbualan panjang",
+          "Hobi bersama",
+          "Kehadiran tenang"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Neon",
+        "t": "Bercahaya dari segi emosi. Anda terikat perlahan dan bersinar lebih lama daripada sesiapa."
+      },
+      {
+        "s": "O",
+        "n": "Oksigen",
+        "t": "Anda membuat setiap ikatan bernafas. Orang rasa ringan apabila anda tiba."
+      },
+      {
+        "s": "Au",
+        "n": "Emas",
+        "t": "Jarang, hangat, dan dengan bangganya tidak bertindak balas dengan orang yang salah."
+      },
+      {
+        "s": "C",
+        "n": "Karbon",
+        "t": "Elemen tunjang. Setiap ikatan sebenar yang anda bentuk menjadi struktur."
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Accueil",
+    "science": "La Science",
+    "bond": "Labo de Lien",
+    "voices": "ADN Vocal",
+    "faq": "FAQ",
+    "waitlist": "Rejoindre",
+    "quiz": "Quiz"
+  },
+  "hero": {
+    "kicker": "Rencontre et Mariage par IA",
+    "title": "La Science de Nous",
+    "sub": "Tombez pour une voix, une valeur, un etre. Pas une photo.",
+    "cta": "Rejoindre la liste",
+    "secondary": "Voir la science",
+    "rot": [
+      "étincelles",
+      "fusion",
+      "résonance"
+    ]
+  },
+  "features": {
+    "anti": "Decouverte Anti-Profil",
+    "antiSub": "Pas de photos pour les 3 premieres interactions. Matchez par voix, valeurs, resonance.",
+    "trial": "Essai de Lien de 7 Jours",
+    "trialSub": "Des invites quotidiennes structurees pendant exactement 7 jours.",
+    "matrimony": "Mariage a Double Aveugle",
+    "matrimonySub": "Pour un engagement serieux: vous signalez, nous protegeons votre vie privee."
+  },
+  "bond": {
+    "title": "Le Labo de Lien",
+    "sub": "Chaque inscription eleve la charge mondiale. A 100 pour cent, la premiere etincelle illumine le monde.",
+    "spark": "Etincelle",
+    "fusion": "Fusion",
+    "resonance": "Resonance"
+  },
+  "voice": {
+    "title": "ADN Vocal",
+    "sub": "Dites trois mots. Nous transformons votre voix en un sigille unique.",
+    "record": "Enregistrer 15 secondes",
+    "capture": "ADN vocal capture",
+    "onDevice": "ADN Vocal sur Appareil",
+    "onDeviceSub": "Votre voix est traitee sur votre telephone. Seule la signature mathematique quitte l appareil."
+  },
+  "waitlist": {
+    "title": "Rejoindre la liste",
+    "sub": "Soyez parmi les premieres etincelles. La chimie de base est gratuite pour toujours.",
+    "email": "Votre email",
+    "submit": "Reserver mon etincelle",
+    "success": "Vous etes sur la liste. Le monde se charge.",
+    "count": "personnes en liste"
+  },
+  "faq": {
+    "title": "Bonnes questions",
+    "when": "Quand lancez-vous ?",
+    "whenA": "Premiere etincelle: 14 fevrier 2027.",
+    "free": "Est-ce gratuit ?",
+    "freeA": "La chimie de base est gratuite pour toujours.",
+    "countries": "Quels pays d abord ?",
+    "countriesA": "Nous illumons ou la charge est la plus haute.",
+    "trialEnd": "Comment finit l essai de lien ?",
+    "trialEndA": "Jour 7, tous deux choisissent en silence, reveles ensemble."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Posez une question a Catalyst",
+    "send": "Envoyer"
+  },
+  "countdown": {
+    "days": "Jours",
+    "hrs": "Hrs",
+    "min": "Min",
+    "sec": "Sec"
+  },
+  "quiz": {
+    "title": "Quel élément êtes-vous ?",
+    "share": "Partager mon élément ✦",
+    "again": "Recommencer ↺",
+    "questions": [
+      {
+        "q": "Votre premier lien idéal ressemble à…",
+        "a": [
+          "Un vocal à 2h du matin",
+          "Une marche silencieuse",
+          "Échanger des playlists",
+          "Cuisiner ensemble"
+        ]
+      },
+      {
+        "q": "Qu est-ce qui compte le plus ?",
+        "a": [
+          "La profondeur",
+          "L humour",
+          "La foi",
+          "L ambition"
+        ]
+      },
+      {
+        "q": "Une soirée parfaite, c est…",
+        "a": [
+          "Observer les étoiles",
+          "Une longue discussion",
+          "Un loisir partagé",
+          "Une présence calme"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Néon",
+        "t": "Lumineux émotionnellement. Vous vous liez lentement et brillez plus longtemps que quiconque."
+      },
+      {
+        "s": "O",
+        "n": "Oxygène",
+        "t": "Vous faites respirer chaque lien. Les gens se sentent plus légers à votre arrivée."
+      },
+      {
+        "s": "Au",
+        "n": "Or",
+        "t": "Rare, chaleureux, et superbement inerte avec les mauvaises personnes."
+      },
+      {
+        "s": "C",
+        "n": "Carbone",
+        "t": "L élément fondateur. Chaque vrai lien que vous formez devient structurel."
+      }
+    ]
+  }
+}

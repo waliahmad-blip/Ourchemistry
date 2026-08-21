@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Home",
+    "science": "The Science",
+    "bond": "Bond Lab",
+    "voices": "Voice DNA",
+    "faq": "FAQ",
+    "waitlist": "Join",
+    "quiz": "Quiz"
+  },
+  "hero": {
+    "kicker": "AI-Powered Dating and Matrimony",
+    "title": "The Science of Us",
+    "sub": "Fall for a voice, a value, a way of being. Not a photo.",
+    "cta": "Join the waitlist",
+    "secondary": "See the science",
+    "rot": [
+      "sparks",
+      "fusion",
+      "resonance"
+    ]
+  },
+  "features": {
+    "anti": "Anti-Profile Discovery",
+    "antiSub": "No photos for the first 3 interactions. Match on voice, values, resonance.",
+    "trial": "The 7-Day Bond Trial",
+    "trialSub": "Structured daily prompts for exactly 7 days.",
+    "matrimony": "Double-Blind Matrimony",
+    "matrimonySub": "For serious commitment: you signal intent, we protect your privacy."
+  },
+  "bond": {
+    "title": "The Bond Lab",
+    "sub": "Every signup raises the global charge. At 100 percent, the first spark ignites worldwide.",
+    "spark": "Spark",
+    "fusion": "Fusion",
+    "resonance": "Resonance"
+  },
+  "voice": {
+    "title": "Voice DNA",
+    "sub": "Speak any three words. We turn your voiceprint into a one-of-one elemental sigil.",
+    "record": "Record 15 seconds",
+    "capture": "Voice DNA captured",
+    "onDevice": "On-Device Voice DNA",
+    "onDeviceSub": "Your voiceprint is processed on your phone. Only the mathematical signature leaves the device."
+  },
+  "waitlist": {
+    "title": "Join the waitlist",
+    "sub": "Be among the first sparks. Free forever for core chemistry.",
+    "email": "Your email",
+    "submit": "Reserve my spark",
+    "success": "You are on the list. The world charges.",
+    "count": "souls on the waitlist"
+  },
+  "faq": {
+    "title": "Good questions",
+    "when": "When do you launch?",
+    "whenA": "First spark: February 14, 2027.",
+    "free": "Is it free?",
+    "freeA": "Core chemistry is free forever.",
+    "countries": "Which countries first?",
+    "countriesA": "We ignite where the waitlist charge is highest.",
+    "trialEnd": "How does the bond trial end?",
+    "trialEndA": "On day 7, both choose in silence, revealed together."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Ask Catalyst anything",
+    "send": "Send"
+  },
+  "countdown": {
+    "days": "Days",
+    "hrs": "Hrs",
+    "min": "Min",
+    "sec": "Sec"
+  },
+  "quiz": {
+    "title": "Which element are you?",
+    "share": "Share my element ✦",
+    "again": "Take it again ↺",
+    "questions": [
+      {
+        "q": "Your ideal first bond looks like…",
+        "a": [
+          "A 2am voice note",
+          "A silent walk",
+          "Trading playlists",
+          "Cooking together"
+        ]
+      },
+      {
+        "q": "What matters most?",
+        "a": [
+          "Depth",
+          "Humor",
+          "Faith",
+          "Ambition"
+        ]
+      },
+      {
+        "q": "A perfect evening is…",
+        "a": [
+          "Stargazing",
+          "A long talk",
+          "A shared hobby",
+          "Quiet presence"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Neon",
+        "t": "Emotionally luminous. You bond slowly and glow longer than anyone expects."
+      },
+      {
+        "s": "O",
+        "n": "Oxygen",
+        "t": "You make every bond breathe. People feel lighter the moment you arrive."
+      },
+      {
+        "s": "Au",
+        "n": "Gold",
+        "t": "Rare, warm, and gloriously unreactive with the wrong people."
+      },
+      {
+        "s": "C",
+        "n": "Carbon",
+        "t": "The backbone element. Every real bond you form becomes structural."
+      }
+    ]
+  }
+}

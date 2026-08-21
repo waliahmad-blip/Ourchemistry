@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Inicio",
+    "science": "La Ciencia",
+    "bond": "Lab del Vinculo",
+    "voices": "ADN Vocal",
+    "faq": "Preguntas",
+    "waitlist": "Unirse",
+    "quiz": "Test"
+  },
+  "hero": {
+    "kicker": "Citas y Matrimonio con IA",
+    "title": "La Ciencia de Nosotros",
+    "sub": "Enamorate de una voz, un valor, un ser. No de una foto.",
+    "cta": "Unirse a la lista",
+    "secondary": "Ver la ciencia",
+    "rot": [
+      "chispas",
+      "fusión",
+      "resonancia"
+    ]
+  },
+  "features": {
+    "anti": "Descubrimiento Anti-Perfil",
+    "antiSub": "Sin fotos para las 3 primeras interacciones. Conecta por voz, valores, resonancia.",
+    "trial": "Prueba de Vinculo de 7 Dias",
+    "trialSub": "Prompts diarios estructurados durante exactamente 7 dias.",
+    "matrimony": "Matrimonio de Doble Ciego",
+    "matrimonySub": "Para un compromiso serio: tu senalas intencion, nosotros protegemos tu privacidad."
+  },
+  "bond": {
+    "title": "Lab del Vinculo",
+    "sub": "Cada registro eleva la carga global. Al 100 por ciento, la primera chispa ilumina el mundo.",
+    "spark": "Chispa",
+    "fusion": "Fusion",
+    "resonance": "Resonancia"
+  },
+  "voice": {
+    "title": "ADN Vocal",
+    "sub": "Di tres palabras. Convertimos tu voz en un sigilo unico.",
+    "record": "Grabar 15 segundos",
+    "capture": "ADN vocal capturado",
+    "onDevice": "ADN Vocal en Dispositivo",
+    "onDeviceSub": "Tu voz se procesa en tu telefono. Solo la firma matematica sale del dispositivo."
+  },
+  "waitlist": {
+    "title": "Unirse a la lista",
+    "sub": "Se de las primeras chispas. La quimica basica es gratis para siempre.",
+    "email": "Tu email",
+    "submit": "Reservar mi chispa",
+    "success": "Estas en la lista. El mundo se carga.",
+    "count": "personas en la lista"
+  },
+  "faq": {
+    "title": "Buenas preguntas",
+    "when": "Cuando lanzan?",
+    "whenA": "Primera chispa: 14 febrero 2027.",
+    "free": "Es gratis?",
+    "freeA": "La quimica basica es gratis para siempre.",
+    "countries": "Que paises primero?",
+    "countriesA": "Encendemos donde la carga es mas alta.",
+    "trialEnd": "Como termina la prueba de vinculo?",
+    "trialEndA": "Dia 7, ambos eligen en silencio, revelados juntos."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Pregunta a Catalyst lo que sea",
+    "send": "Enviar"
+  },
+  "countdown": {
+    "days": "Días",
+    "hrs": "Hrs",
+    "min": "Min",
+    "sec": "Seg"
+  },
+  "quiz": {
+    "title": "¿Qué elemento eres?",
+    "share": "Compartir mi elemento ✦",
+    "again": "Repetir ↺",
+    "questions": [
+      {
+        "q": "Tu primer vínculo ideal se ve como…",
+        "a": [
+          "Una nota de voz a las 2am",
+          "Un paseo en silencio",
+          "Intercambiar playlists",
+          "Cocinar juntos"
+        ]
+      },
+      {
+        "q": "¿Qué importa más?",
+        "a": [
+          "Profundidad",
+          "Humor",
+          "Fe",
+          "Ambición"
+        ]
+      },
+      {
+        "q": "Una noche perfecta es…",
+        "a": [
+          "Ver las estrellas",
+          "Una charla larga",
+          "Un hobby compartido",
+          "Presencia tranquila"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Neón",
+        "t": "Emocionalmente luminoso. Te vinculas despacio y brillas más tiempo de lo que nadie espera."
+      },
+      {
+        "s": "O",
+        "n": "Oxígeno",
+        "t": "Haces respirar cada vínculo. La gente se siente más ligera cuando llegas."
+      },
+      {
+        "s": "Au",
+        "n": "Oro",
+        "t": "Raro, cálido, y gloriosamente inerte con las personas equivocadas."
+      },
+      {
+        "s": "C",
+        "n": "Carbono",
+        "t": "El elemento vertebral. Cada vínculo real que formas se vuelve estructural."
+      }
+    ]
+  }
+}

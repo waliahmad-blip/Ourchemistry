@@ -1,0 +1,45 @@
+# dependeencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env*.local
+.env.development
+.env.production
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# runtime data — contains user emails, never commit
+/data/
+waitlist.json
+
+# local-only files (prototypes, audits, intermediate data)
+_audit.ps1
+ouchemistry_coming_soon.html
+scripts/dict-ext-a.json
+scripts/dict-ext-b.json
+server-out.log
+server-err.log

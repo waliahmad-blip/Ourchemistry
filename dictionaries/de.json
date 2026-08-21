@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Start",
+    "science": "Die Wissenschaft",
+    "bond": "Bindungs-Lab",
+    "voices": "Stimmen-DNA",
+    "faq": "FAQ",
+    "waitlist": "Beitreten",
+    "quiz": "Quiz"
+  },
+  "hero": {
+    "kicker": "KI-gestuetzte Partnerschaft und Ehe",
+    "title": "Die Wissenschaft von Uns",
+    "sub": "Verliebe dich in eine Stimme, einen Wert, ein Wesen. Nicht in ein Foto.",
+    "cta": "Warteliste beitreten",
+    "secondary": "Die Wissenschaft sehen",
+    "rot": [
+      "Funken",
+      "Fusion",
+      "Resonanz"
+    ]
+  },
+  "features": {
+    "anti": "Anti-Profil-Entdeckung",
+    "antiSub": "Keine Fotos fuer die ersten 3 Interaktionen. Matche ueber Stimme, Werte, Resonanz.",
+    "trial": "7-Tage-Bindungstest",
+    "trialSub": "Strukturierte taegliche Prompts fuer genau 7 Tage.",
+    "matrimony": "Doppelblind-Ehe",
+    "matrimonySub": "Fuer ernste Bindung: du meldest Absicht, wir schuetzen deine Privatsphaere."
+  },
+  "bond": {
+    "title": "Bindungs-Lab",
+    "sub": "Jede Anmeldung erhoeht die globale Ladung. Bei 100 Prozent entzuendet sich der erste Funke weltweit.",
+    "spark": "Funke",
+    "fusion": "Fusion",
+    "resonance": "Resonanz"
+  },
+  "voice": {
+    "title": "Stimmen-DNA",
+    "sub": "Sprich drei Worte. Wir verwandeln deine Stimme in ein einzigartiges Siegel.",
+    "record": "15 Sekunden aufnehmen",
+    "capture": "Stimmen-DNA erfasst",
+    "onDevice": "Stimmen-DNA auf Geraet",
+    "onDeviceSub": "Deine Stimme wird auf deinem Handy verarbeitet. Nur die mathematische Signatur verlaesst das Geraet."
+  },
+  "waitlist": {
+    "title": "Warteliste beitreten",
+    "sub": "Sei unter den ersten Funken. Basis-Chemie ist fuer immer kostenlos.",
+    "email": "Deine E-Mail",
+    "submit": "Meinen Funken sichern",
+    "success": "Du bist auf der Liste. Die Welt laedt sich auf.",
+    "count": "Personen auf der Warteliste"
+  },
+  "faq": {
+    "title": "Gute Fragen",
+    "when": "Wann startet ihr?",
+    "whenA": "Erster Funke: 14 Februar 2027.",
+    "free": "Ist es kostenlos?",
+    "freeA": "Basis-Chemie ist fuer immer kostenlos.",
+    "countries": "Welche Laender zuerst?",
+    "countriesA": "Wir entzuenden dort, wo die Ladung am hoechsten ist.",
+    "trialEnd": "Wie endet der Bindungstest?",
+    "trialEndA": "Tag 7, beide waehlen schweigend, gemeinsam enthuellt."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Frag Catalyst alles",
+    "send": "Senden"
+  },
+  "countdown": {
+    "days": "Tage",
+    "hrs": "Std",
+    "min": "Min",
+    "sec": "Sek"
+  },
+  "quiz": {
+    "title": "Welches Element bist du?",
+    "share": "Mein Element teilen ✦",
+    "again": "Nochmal ↺",
+    "questions": [
+      {
+        "q": "Deine ideale erste Bindung ist wie…",
+        "a": [
+          "Eine Sprachnotiz um 2 Uhr",
+          "Ein stiller Spaziergang",
+          "Playlists tauschen",
+          "Gemeinsam kochen"
+        ]
+      },
+      {
+        "q": "Was zählt am meisten?",
+        "a": [
+          "Tiefe",
+          "Humor",
+          "Glaube",
+          "Ehrgeiz"
+        ]
+      },
+      {
+        "q": "Ein perfekter Abend ist…",
+        "a": [
+          "Sterne schauen",
+          "Ein langes Gespräch",
+          "Ein gemeinsames Hobby",
+          "Stille Präsenz"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Neon",
+        "t": "Emotional leuchtend. Du bindest dich langsam und strahlst länger als alle erwarten."
+      },
+      {
+        "s": "O",
+        "n": "Sauerstoff",
+        "t": "Du lässt jede Bindung atmen. Menschen fühlen sich leichter, sobald du da bist."
+      },
+      {
+        "s": "Au",
+        "n": "Gold",
+        "t": "Selten, warm und herrlich reaktionsträge gegenüber den falschen Menschen."
+      },
+      {
+        "s": "C",
+        "n": "Kohlenstoff",
+        "t": "Das Rückgrat-Element. Jede echte Bindung, die du formst, wird tragfähig."
+      }
+    ]
+  }
+}

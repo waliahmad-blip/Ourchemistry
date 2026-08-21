@@ -1,0 +1,16 @@
+{
+  "name": "ourchemistry.ai — The Science of Us",
+  "short_name": "ourchemistry",
+  "description": "Voice-first AI dating & matrimony. Match on Voice DNA, values and resonance — not photos.",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#04060f",
+  "theme_color": "#04060f",
+  "categories": ["lifestyle", "social"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

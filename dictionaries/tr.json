@@ -1,0 +1,133 @@
+{
+  "brand": "ourchemistry",
+  "nav": {
+    "home": "Ana Sayfa",
+    "science": "Bilim",
+    "bond": "Bag Labi",
+    "voices": "Ses DNA",
+    "faq": "SSS",
+    "waitlist": "Katil",
+    "quiz": "Test"
+  },
+  "hero": {
+    "kicker": "Yapay Zeka Destekli Bulusma ve Evlilik",
+    "title": "Bizim Bilimimiz",
+    "sub": "Bir ses, bir deger, bir varlik icin tutul. Bir fotograf icin degil.",
+    "cta": "Bekleme listesine katil",
+    "secondary": "Bilimi gor",
+    "rot": [
+      "kıvılcım",
+      "füzyon",
+      "rezonans"
+    ]
+  },
+  "features": {
+    "anti": "Anti-Profil Keshfi",
+    "antiSub": "Ilk 3 etkilesimde fotograf yok. Ses, deger ve uyumla esles.",
+    "trial": "7 Gunluk Bag Denemesi",
+    "trialSub": "Tam 7 gun boyunca yapilandirilmis gunluk ipuclari.",
+    "matrimony": "Cift Kor Evlilik",
+    "matrimonySub": "Ciddi baglilik icin: niyetinizi belirtin, gizliliginizi koruyalim."
+  },
+  "bond": {
+    "title": "Bag Labi",
+    "sub": "Her kayit kuresel yuku artirir. Yuzde 100'de ilk kivilcim dunyayi aydinlatir.",
+    "spark": "Kivilcim",
+    "fusion": "Fuzyon",
+    "resonance": "Rezonans"
+  },
+  "voice": {
+    "title": "Ses DNA",
+    "sub": "Herhangi uc kelime soyle. Sesinizi essiz bir sembole donusturuyoruz.",
+    "record": "15 saniye kaydet",
+    "capture": "Ses DNA yakalandi",
+    "onDevice": "Cihaz Uzeri Ses DNA",
+    "onDeviceSub": "Sesiniz telefonunuzda islenir. Yalnizca matematiksel imza cihazdan cikar."
+  },
+  "waitlist": {
+    "title": "Bekleme listesine katil",
+    "sub": "Ilk kivilcimlardan ol. Temel kimya sonsuza dek ucretsiz.",
+    "email": "E-postaniz",
+    "submit": "Kivilcimimi ayir",
+    "success": "Listedesin. Dunya yukleniyor.",
+    "count": "bekleme listesinde kisi"
+  },
+  "faq": {
+    "title": "Iyi sorular",
+    "when": "Ne zaman basliyorsunuz?",
+    "whenA": "Ilk kivilcim: 14 Subat 2027.",
+    "free": "Ucretsiz mi?",
+    "freeA": "Temel kimya sonsuza dek ucretsiz.",
+    "countries": "Once hangi ulkeler?",
+    "countriesA": "Yukun en yuksek oldugu yerde atesleniriz.",
+    "trialEnd": "Bag denemesi nasil biter?",
+    "trialEndA": "Gun 7'de ikisi de sessizce secer, birlikte aciklanir."
+  },
+  "catalyst": {
+    "title": "Catalyst",
+    "placeholder": "Catalyste bir sey sor",
+    "send": "Gonder"
+  },
+  "countdown": {
+    "days": "Gün",
+    "hrs": "Saat",
+    "min": "Dak",
+    "sec": "Sn"
+  },
+  "quiz": {
+    "title": "Hangi elementsin?",
+    "share": "Elementimi paylaş ✦",
+    "again": "Tekrar dene ↺",
+    "questions": [
+      {
+        "q": "İdeal ilk bağın şuna benzer…",
+        "a": [
+          "Gece 2 de sesli mesaj",
+          "Sessiz bir yürüyüş",
+          "Çalma listesi takası",
+          "Birlikte yemek yapmak"
+        ]
+      },
+      {
+        "q": "En önemli şey nedir?",
+        "a": [
+          "Derinlik",
+          "Mizah",
+          "İnanç",
+          "Hırs"
+        ]
+      },
+      {
+        "q": "Mükemmel bir akşam…",
+        "a": [
+          "Yıldızları izlemek",
+          "Uzun bir sohbet",
+          "Ortak bir hobi",
+          "Sessiz birliktelik"
+        ]
+      }
+    ],
+    "elements": [
+      {
+        "s": "Ne",
+        "n": "Neon",
+        "t": "Duygusal olarak parlaksın. Yavaş bağlanır, herkesten uzun parlar."
+      },
+      {
+        "s": "O",
+        "n": "Oksijen",
+        "t": "Her bağa nefes verirsin. Geldiğin an insanlar hafifler."
+      },
+      {
+        "s": "Au",
+        "n": "Altın",
+        "t": "Nadir, sıcak ve yanlış insanlara karşı gururla tepkisiz."
+      },
+      {
+        "s": "C",
+        "n": "Karbon",
+        "t": "Omurga elementi. Kurduğun her gerçek bağ yapısal olur."
+      }
+    ]
+  }
+}
