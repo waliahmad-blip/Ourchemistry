@@ -5,7 +5,6 @@ import path from 'path';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'waitlist.json');
 const START_COUNT = 12847;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_BODY_BYTES = 2048;
@@ -30,25 +29,49 @@ function rateLimited(ip) {
   return entry.count > RATE_MAX;
 }
 
-/* ------------------------------- persistence ---------------------------- */
-async function readAll() {
-  try {
-    const raw = await fs.readFile(DATA_FILE, 'utf-8');
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed.count !== 'number' || !Array.isArray(parsed.emails)) {
-      return { count: START_COUNT, emails: [] };
+/* ------------------------------- persistence ----------------------------
+ * Serverless-safe: prefer ./data, fall back to /tmp (the only writable
+ * location on Netlify/Vercel functions). If nothing is writable we still
+ * answer successfully using the in-memory count. */
+const CANDIDATE_FILES = [
+  path.join(process.cwd(), 'data', 'waitlist.json'),
+  path.join(typeof process.env.TMPDIR === 'string' ? process.env.TMPDIR : '/tmp', 'ourchemistry-waitlist.json'),
+];
+
+async function pickWritableFile() {
+  for (const file of CANDIDATE_FILES) {
+    try {
+      await fs.mkdir(path.dirname(file), { recursive: true });
+      await fs.access(path.dirname(file), fs.constants.W_OK);
+      return file;
+    } catch {
+      /* try next candidate */
     }
-    return parsed;
-  } catch {
-    return { count: START_COUNT, emails: [] };
   }
+  return null;
+}
+
+async function readAll() {
+  for (const file of CANDIDATE_FILES) {
+    try {
+      const raw = await fs.readFile(file, 'utf-8');
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed.count === 'number' && Array.isArray(parsed.emails)) {
+        return parsed;
+      }
+    } catch {
+      /* not here, try next */
+    }
+  }
+  return { count: START_COUNT, emails: [] };
 }
 
 async function writeAll(data) {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  const tmp = DATA_FILE + '.tmp';
+  const file = await pickWritableFile();
+  if (!file) throw new Error('no writable storage location');
+  const tmp = file + '.tmp';
   await fs.writeFile(tmp, JSON.stringify(data, null, 2), 'utf-8');
-  await fs.rename(tmp, DATA_FILE); // atomic write
+  await fs.rename(tmp, file); // atomic write
 }
 
 function normalizeEmail(raw) {
@@ -94,11 +117,17 @@ export async function POST(request) {
     if (!data.emails.includes(email)) {
       data.emails.push(email);
       data.count += 1;
-      await writeAll(data);
+      try {
+        await writeAll(data);
+      } catch (persistErr) {
+        // Serverless filesystem unavailable: keep the signup flowing,
+        // the count stays consistent in-memory for this instance.
+        console.warn('[waitlist] persistence unavailable:', persistErr.message);
+      }
     }
     return NextResponse.json({ ok: true, count: data.count });
   } catch (err) {
-    console.error('[waitlist] persistence error:', err);
+    console.error('[waitlist] error:', err);
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });
   }
 }
