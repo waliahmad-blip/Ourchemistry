@@ -7,7 +7,6 @@ import VoiceDNACapture from './VoiceDNACapture';
 import BondMeter from './BondMeter';
 import ChemistryQuiz from './ChemistryQuiz';
 import BrandMark from './BrandMark';
-import Heartline from './Heartline';
 import Tutorial from './Tutorial';
 import LoginModal from './LoginModal';
 import Starfield from './Starfield';
@@ -16,6 +15,7 @@ import ScienceDetail from './ScienceDetail';
 import TwoHeartsSync from './TwoHeartsSync';
 import Comet from './Comet';
 import FusionLab from './FusionLab';
+import PulseStrip from './PulseStrip';
 import { EyeOff, AudioLines, Link2, HeartHandshake, FlaskConical } from 'lucide-react';
 
 /* Rotating word that cycles a list of translated synonyms */
@@ -37,19 +37,6 @@ function RotatingLex({ words }) {
   }, [list.length]);
 
   return <span className={`lex grad-text ${swap ? 'swap' : ''}`}>{list[i]}</span>;
-}
-
-/* Living heartbeat divider — bright, new rhythm every view */
-function Ecg() {
-  return (
-    <div
-      className="fixed top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none"
-      style={{ opacity: 0.85, zIndex: 0 }}
-      aria-hidden="true"
-    >
-      <Heartline beats={7} height={44} from="#5eead4" to="#a78bfa" />
-    </div>
-  );
 }
 
 function Hero({ dict }) {
@@ -95,21 +82,18 @@ function Features({ dict }) {
   const [active, setActive] = useState(null);
   const F = dict.features;
   const items = [
-    { key: 'anti',      Icon: EyeOff,         color: '#5eead4' },
-    { key: 'voiceDna',  Icon: AudioLines,     color: '#ffd7a1' },
-    { key: 'trial',     Icon: Link2,          color: '#a78bfa' },
+    { key: 'anti', Icon: EyeOff, color: '#5eead4' },
+    { key: 'voiceDna', Icon: AudioLines, color: '#ffd7a1' },
+    { key: 'trial', Icon: Link2, color: '#a78bfa' },
     { key: 'matrimony', Icon: HeartHandshake, color: '#ff8fb2' },
-    { key: 'element',   Icon: FlaskConical,   color: '#67e8f9' },
+    { key: 'element', Icon: FlaskConical, color: '#67e8f9' },
   ];
   const span = (i) =>
     i === 4 ? 'sm:col-span-2 md:col-span-3' : i < 3 ? 'md:col-span-2' : 'md:col-span-3';
 
   return (
     <section className="h-screen flex flex-col items-center justify-center px-6 py-20 overflow-y-auto">
-      <h2 className="font-display text-3xl font-bold grad-text">{dict.nav.science}</h2>
-      <div className="w-full max-w-md mt-4 mb-8">
-        <Heartline beats={5} height={48} from="#5eead4" to="#67e8f9" />
-      </div>
+      <h2 className="font-display text-3xl font-bold grad-text mb-8">{dict.nav.science}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-5 max-w-4xl w-full">
         {items.map(({ key, Icon, color }, i) => (
           <motion.article
@@ -246,8 +230,8 @@ export default function ConstellationStage({ dict, locale }) {
       >
         ⚡ Fusion
       </button>
-      <Ecg />
       <Comet />
+      <PulseStrip />
       <Tutorial page={view} dict={dict} />
 
       <nav
@@ -259,9 +243,8 @@ export default function ConstellationStage({ dict, locale }) {
             key={n.id}
             onClick={() => setView(n.id)}
             aria-current={view === n.id ? 'page' : undefined}
-            className={`dock-btn whitespace-nowrap text-xs px-3 py-1.5 rounded-full ${
-              view === n.id ? 'bg-[#a78bfa] text-[#04060f] font-semibold' : 'text-white/70'
-            }`}
+            className={`dock-btn whitespace-nowrap text-xs px-3 py-1.5 rounded-full ${view === n.id ? 'bg-[#a78bfa] text-[#04060f] font-semibold' : 'text-white/70'
+              }`}
           >
             {n.label}
           </button>
