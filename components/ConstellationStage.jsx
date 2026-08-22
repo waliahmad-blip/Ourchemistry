@@ -6,6 +6,14 @@ import WaitlistForm from './WaitlistForm';
 import VoiceDNACapture from './VoiceDNACapture';
 import BondMeter from './BondMeter';
 import ChemistryQuiz from './ChemistryQuiz';
+import BrandMark from './BrandMark';
+import Heartline from './Heartline';
+import Tutorial from './Tutorial';
+import LoginModal from './LoginModal';
+import Starfield from './Starfield';
+import Aurora from './Aurora';
+import ScienceDetail from './ScienceDetail';
+import { EyeOff, AudioLines, Link2, HeartHandshake, FlaskConical } from 'lucide-react';
 
 /* Rotating word that cycles a list of translated synonyms */
 function RotatingLex({ words }) {
@@ -28,18 +36,14 @@ function RotatingLex({ words }) {
   return <span className={`lex grad-text ${swap ? 'swap' : ''}`}>{list[i]}</span>;
 }
 
-/* Decorative heartbeat divider */
+/* Living heartbeat divider — new waveform on every page view */
 function Ecg() {
   return (
-    <div className="ecg fixed top-1/2 left-0 right-0 pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
-        <path
-          d="M0 20 H140 l12-13 16 26 12-13 H420 l12-13 16 26 12-13 H740 l12-13 16 26 12-13 H1040 l12-13 16 26 12-13 H1200"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      </svg>
+    <div
+      className="ecg fixed top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none"
+      aria-hidden="true"
+    >
+      <Heartline beats={7} height={40} from="#5eead4" to="#a78bfa" />
     </div>
   );
 }
@@ -81,24 +85,61 @@ function Hero({ dict }) {
 
 function Features({ dict }) {
   const setView = useAppStore((s) => s.setView);
+  const [active, setActive] = useState(null);
+  const F = dict.features;
   const items = [
-    { icon: '🎭', t: dict.features.anti, s: dict.features.antiSub },
-    { icon: '🔗', t: dict.features.trial, s: dict.features.trialSub },
-    { icon: '💍', t: dict.features.matrimony, s: dict.features.matrimonySub },
+    { key: 'anti',      Icon: EyeOff,         color: '#5eead4' },
+    { key: 'voiceDna',  Icon: AudioLines,     color: '#ffd7a1' },
+    { key: 'trial',     Icon: Link2,          color: '#a78bfa' },
+    { key: 'matrimony', Icon: HeartHandshake, color: '#ff8fb2' },
+    { key: 'element',   Icon: FlaskConical,   color: '#67e8f9' },
   ];
+  // Row 1: cards 1–3 (span 2 of 6) · Row 2: cards 4–5 (span 3 of 6) — balanced 3+2
+  const span = (i) =>
+    i === 4 ? 'sm:col-span-2 md:col-span-3' : i < 3 ? 'md:col-span-2' : 'md:col-span-3';
+
   return (
-    <section className="h-screen flex flex-col items-center justify-center px-6">
-      <h2 className="font-display text-3xl font-bold mb-8 grad-text">{dict.nav.science}</h2>
-      <div className="grid md:grid-cols-3 gap-5 max-w-4xl w-full">
-        {items.map((it) => (
-          <div
-            key={it.t}
-            className="glass rounded-2xl p-6 hover:-translate-y-1 hover:border-[#5eead4]/40 transition"
+    <section className="h-screen flex flex-col items-center justify-center px-6 py-20 overflow-y-auto">
+      <h2 className="font-display text-3xl font-bold grad-text">{dict.nav.science}</h2>
+      <div className="w-full max-w-md mt-4 mb-8">
+        <Heartline beats={5} height={48} from="#5eead4" to="#67e8f9" />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-5 max-w-4xl w-full">
+        {items.map(({ key, Icon, color }, i) => (
+          <motion.article
+            key={key}
+            onClick={() => setActive(i)}
+            whileTap={{ scale: 0.97 }}
+            role="button"
+            aria-label={F[key]}
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6 }}
+            className={`group relative cursor-pointer overflow-hidden rounded-2xl glass p-5 hover:border-white/20 transition ${span(i)}`}
           >
-            <div className="text-3xl mb-3">{it.icon}</div>
-            <h3 className="text-[#ffd7a1] font-semibold mb-2">{it.t}</h3>
-            <p className="text-white/60 text-sm">{it.s}</p>
-          </div>
+            <div
+              className="absolute inset-x-5 top-0 h-px"
+              style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }}
+            />
+            <div className="mb-4 flex items-center justify-between">
+              <span
+                className="grid h-11 w-11 place-items-center rounded-full border transition-transform duration-500 group-hover:scale-110"
+                style={{
+                  borderColor: `${color}55`,
+                  background: `${color}12`,
+                  boxShadow: `0 0 22px ${color}40, inset 0 0 10px ${color}22`,
+                }}
+              >
+                <Icon size={19} color={color} strokeWidth={1.8} />
+              </span>
+              <span className="font-mono text-[11px] tracking-[0.25em]" style={{ color: `${color}cc` }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 className="font-semibold mb-2" style={{ color }}>{F[key]}</h3>
+            <p className="text-white/60 text-sm">{F[`${key}Sub`]}</p>
+          </motion.article>
         ))}
       </div>
       <button
@@ -107,6 +148,14 @@ function Features({ dict }) {
       >
         → {dict.nav.bond}
       </button>
+
+      <ScienceDetail
+        active={active}
+        items={items}
+        dict={dict}
+        onClose={() => setActive(null)}
+        onWaitlist={() => { setActive(null); setView('waitlist'); }}
+      />
     </section>
   );
 }
@@ -146,6 +195,7 @@ function Faq({ dict }) {
 export default function ConstellationStage({ dict, locale }) {
   const view = useAppStore((s) => s.view);
   const setView = useAppStore((s) => s.setView);
+  const [loginOpen, setLoginOpen] = useState(false);
 
   const navItems = [
     { id: 'hero', label: dict.nav.home },
@@ -174,7 +224,17 @@ export default function ConstellationStage({ dict, locale }) {
 
   return (
     <>
+      <BrandMark />
+      <Starfield />
+      <Aurora view={view} />
+      <button
+        onClick={() => setLoginOpen(true)}
+        className="fixed top-3 right-4 z-[45] glass rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-white/70 transition hover:text-[#5eead4]"
+      >
+        {dict?.login?.submit ?? 'Sign in'}
+      </button>
       <Ecg />
+      <Tutorial page={view} dict={dict} />
 
       <nav
         aria-label="Primary"
@@ -211,6 +271,8 @@ export default function ConstellationStage({ dict, locale }) {
           {view === 'faq' && <Faq dict={dict} />}
         </motion.div>
       </AnimatePresence>
+
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} dict={dict} />
     </>
   );
 }

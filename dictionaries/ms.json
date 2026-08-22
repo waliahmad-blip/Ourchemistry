@@ -27,7 +27,11 @@
     "trial": "Cuba Ikatan 7 Hari",
     "trialSub": "Promp harian tersusun selama 7 hari tepat.",
     "matrimony": "Perkahwinan Buta Berganda",
-    "matrimonySub": "Untuk komitmen serius: anda nyatakan niat, kami lindungi privasi anda."
+    "matrimonySub": "Untuk komitmen serius: anda nyatakan niat, kami lindungi privasi anda.",
+    "voiceDna": "Padanan DNA Suara",
+    "voiceDnaSub": "Tiga perkataan yang diucapkan menjadi cap akustik unik. Kami memadankan resonans, bukan wajah.",
+    "element": "Keserasian Elemen",
+    "elementSub": "Temui elemen anda dan lihat ikatan mana paling dalam — kimia yang boleh diukur."
   },
   "bond": {
     "title": "Makmal Ikatan",
@@ -129,5 +133,50 @@
         "t": "Elemen tunjang. Setiap ikatan sebenar yang anda bentuk menjadi struktur."
       }
     ]
+  },
+  "tutorial": {
+    "open": "Cara ia berfungsi",
+    "close": "Faham",
+    "on": "Anda berada di",
+    "hero": {
+      "title": "Selamat datang ke ourchemistry",
+      "body": "Tanpa leret, tanpa foto. Guna kekunci anak panah atau dock di bawah untuk mengembara. Bila sedia, simpan percikan anda dalam senarai tunggu."
+    },
+    "features": {
+      "title": "Sains",
+      "body": "Lima tunjang menggerakkan setiap padanan. Baca setiap kad, kemudian masuk ke Bond Lab untuk merasakan cas global."
+    },
+    "bond": {
+      "title": "Bond Lab",
+      "body": "Temukan dua atom. Setiap pendaftaran menambah cas global. Capai 100 peratus dan percikan pertama menyala."
+    },
+    "voice": {
+      "title": "DNA Suara",
+      "body": "Sebut tiga perkataan. Kami menukar suara anda kepada sigil unik, diproses pada peranti anda dan tidak dimuat naik."
+    },
+    "quiz": {
+      "title": "Kuiz Elemen",
+      "body": "Jawab tiga soalan untuk menemui elemen anda, kemudian kongsi atau padankan dengan elemen pelengkap."
+    },
+    "waitlist": {
+      "title": "Senarai Tunggu",
+      "body": "Masukkan email anda untuk menempah tempat. Kimia asas sentiasa percuma, menjemput rakan menaikkan kedudukan anda."
+    },
+    "faq": {
+      "title": "Soalan Bagus",
+      "body": "Ketik soalan untuk membukanya. Semua tentang pelancaran, harga dan privasi di sini."
+    }
+  },
+  "login": {
+    "title": "Selamat kembali",
+    "sub": "Log masuk untuk memastikan percikan anda selamat",
+    "google": "Teruskan dengan Google",
+    "email": "Alamat email",
+    "password": "Kata laluan",
+    "submit": "Log masuk",
+    "or": "atau",
+    "signup": "Cipta akaun",
+    "noAccount": "Baru di ourchemistry?",
+    "privacy": "Suara dahulu, tanpa foto. Kami tidak menjual data anda."
   }
 }

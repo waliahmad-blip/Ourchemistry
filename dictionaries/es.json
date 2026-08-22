@@ -27,7 +27,11 @@
     "trial": "Prueba de Vinculo de 7 Dias",
     "trialSub": "Prompts diarios estructurados durante exactamente 7 dias.",
     "matrimony": "Matrimonio de Doble Ciego",
-    "matrimonySub": "Para un compromiso serio: tu senalas intencion, nosotros protegemos tu privacidad."
+    "matrimonySub": "Para un compromiso serio: tu senalas intencion, nosotros protegemos tu privacidad.",
+    "voiceDna": "Matching por ADN de voz",
+    "voiceDnaSub": "Tres palabras habladas se convierten en una firma acústica única. Matcheamos resonancia, no rostros.",
+    "element": "Compatibilidad de elementos",
+    "elementSub": "Descubre tu elemento y ve qué vínculos son más profundos: química que puedes medir."
   },
   "bond": {
     "title": "Lab del Vinculo",
@@ -129,5 +133,50 @@
         "t": "El elemento vertebral. Cada vínculo real que formas se vuelve estructural."
       }
     ]
+  },
+  "tutorial": {
+    "open": "Cómo funciona",
+    "close": "Entendido",
+    "on": "Estás en",
+    "hero": {
+      "title": "Bienvenido a ourchemistry",
+      "body": "Sin swipe y sin fotos. Usa las flechas o el dock inferior para viajar entre mundos. Cuando estés listo, guarda tu chispa en la lista de espera."
+    },
+    "features": {
+      "title": "La Ciencia",
+      "body": "Cinco pilares impulsan cada match. Lee cada tarjeta y luego entra al Bond Lab para sentir la carga global."
+    },
+    "bond": {
+      "title": "Bond Lab",
+      "body": "Junta los dos átomos. Cada registro suma a la carga global. Al llegar al 100 por ciento, la primera chispa se enciende."
+    },
+    "voice": {
+      "title": "ADN de voz",
+      "body": "Di tres palabras. Convertimos tu voz en un sello único, procesado en tu dispositivo y nunca subido."
+    },
+    "quiz": {
+      "title": "Test de elementos",
+      "body": "Responde tres preguntas para descubrir tu elemento, luego compártelo o matchea con uno complementario."
+    },
+    "waitlist": {
+      "title": "La lista de espera",
+      "body": "Ingresa tu email para reservar tu lugar. La química básica es gratis; invitar amigos te sube en la lista."
+    },
+    "faq": {
+      "title": "Buenas preguntas",
+      "body": "Toca una pregunta para abrirla. Todo sobre lanzamiento, precios y privacidad está aquí."
+    }
+  },
+  "login": {
+    "title": "Bienvenido de nuevo",
+    "sub": "Inicia sesión para mantener tu chispa segura en tus dispositivos",
+    "google": "Continuar con Google",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "or": "o",
+    "signup": "Crear cuenta",
+    "noAccount": "¿Nuevo en ourchemistry?",
+    "privacy": "Voz primero, sin fotos. Nunca vendemos tus datos."
   }
 }

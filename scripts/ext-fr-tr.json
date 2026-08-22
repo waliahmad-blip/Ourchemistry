@@ -1,0 +1,66 @@
+{
+  "fr": {
+    "features": {
+      "voiceDna": "Matching par ADN vocal",
+      "voiceDnaSub": "Trois mots prononcés deviennent une signature acoustique unique. Nous matchons la résonance, pas les visages.",
+      "element": "Compatibilité des éléments",
+      "elementSub": "Découvrez votre élément et voyez quels liens sont les plus profonds — une chimie mesurable."
+    },
+    "tutorial": {
+      "open": "Comment ça marche",
+      "close": "Compris",
+      "on": "Vous êtes sur",
+      "hero": { "title": "Bienvenue sur ourchemistry", "body": "Sans swipe et sans photo. Utilisez les flèches ou le dock pour voyager entre les mondes. Quand vous êtes prêt, sauvegardez votre étincelle." },
+      "features": { "title": "La Science", "body": "Cinq piliers alimentent chaque match. Lisez chaque carte, puis entrez dans le Bond Lab pour sentir la charge mondiale." },
+      "bond": { "title": "Bond Lab", "body": "Rapprochez les deux atomes. Chaque inscription augmente la charge. À 100 pourcent, la première étincelle s allume." },
+      "voice": { "title": "ADN vocal", "body": "Dites trois mots. Nous transformons votre voix en sigle unique, traité sur votre appareil et jamais envoyé." },
+      "quiz": { "title": "Quiz des éléments", "body": "Répondez à trois questions pour découvrir votre élément, puis partagez-le." },
+      "waitlist": { "title": "La liste d attente", "body": "Entrez votre email pour réserver votre place. La chimie de base est gratuite, inviter des amis vous fait monter." },
+      "faq": { "title": "Bonnes questions", "body": "Touchez une question pour l ouvrir. Tout sur le lancement, les prix et la confidentialité." }
+    },
+    "login": {
+      "title": "Bon retour",
+      "sub": "Connectez-vous pour garder votre étincelle en sécurité",
+      "google": "Continuer avec Google",
+      "email": "Adresse email",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "or": "ou",
+      "signup": "Créer un compte",
+      "noAccount": "Nouveau sur ourchemistry ?",
+      "privacy": "La voix d abord, sans photo. Nous ne vendons jamais vos données."
+    }
+  },
+  "tr": {
+    "features": {
+      "voiceDna": "Ses DNA Eşleşmesi",
+      "voiceDnaSub": "Söylenen üç kelime benzersiz bir akustik imzaya dönüşür. Yüzleri değil, rezonansı eşleştiririz.",
+      "element": "Element Uyumu",
+      "elementSub": "Elementini keşfet ve hangi bağların en derin olduğunu gör — ölçebildiğin kimya."
+    },
+    "tutorial": {
+      "open": "Nasıl çalışır",
+      "close": "Anladım",
+      "on": "Şu an buradasın",
+      "hero": { "title": "ourchemistry ye hoş geldin", "body": "Kaydırma yok, fotoğraf yok. Ok tuşları veya alttaki dock ile dünyalar arasında gez. Hazır olunca kıvılcımını bekleme listesine kaydet." },
+      "features": { "title": "Bilim", "body": "Beş sütun her eşleşmeyi besler. Her kartı oku, sonra Bond Lab e gir ve küresel yükü hisset." },
+      "bond": { "title": "Bond Lab", "body": "İki atomu birleştir. Her kayıt yükü artırır. Yüzde 100 de ilk kıvılcım dünyayı aydınlatır." },
+      "voice": { "title": "Ses DNA", "body": "Herhangi üç kelime söyle. Sesini benzersiz bir işaret fişeğine çeviririz; cihazında işlenir, asla yüklenmez." },
+      "quiz": { "title": "Element Testi", "body": "Üç soruyu yanıtla, elementini keşfet, sonra paylaş ya da tamamlayıcı bir eş bul." },
+      "waitlist": { "title": "Bekleme Listesi", "body": "Yerini ayırtmak için e-postanı gir. Temel kimya her zaman ücretsizdir; arkadaş davet etmek seni öne taşır." },
+      "faq": { "title": "Güzel Sorular", "body": "Bir soruya dokun ve aç. Lansman, fiyat ve gizlilik hakkında her şey burada." }
+    },
+    "login": {
+      "title": "Tekrar hoş geldin",
+      "sub": "Kıvılcımını cihazlar arasında güvende tutmak için giriş yap",
+      "google": "Google ile devam et",
+      "email": "E-posta adresi",
+      "password": "Şifre",
+      "submit": "Giriş yap",
+      "or": "veya",
+      "signup": "Hesap oluştur",
+      "noAccount": "ourchemistry de yeni misin?",
+      "privacy": "Önce ses, fotoğraf yok. Verini asla satmayız."
+    }
+  }
+}

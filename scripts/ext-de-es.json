@@ -1,0 +1,66 @@
+{
+  "de": {
+    "features": {
+      "voiceDna": "Stimm-DNA-Matching",
+      "voiceDnaSub": "Drei gesprochene Worte werden zu einer einzigartigen akustischen Signatur. Wir matchen Resonanz, nicht Gesichter.",
+      "element": "Element-Kompatibilität",
+      "elementSub": "Entdecke dein Element und sieh, welche Bindungen am tiefsten gehen — Chemie, die du messen kannst."
+    },
+    "tutorial": {
+      "open": "So funktioniert es",
+      "close": "Verstanden",
+      "on": "Du bist gerade bei",
+      "hero": { "title": "Willkommen bei ourchemistry", "body": "Ohne Swipen, ohne Fotos. Nutze die Pfeiltasten oder das Dock unten, um zwischen Welten zu reisen. Wenn du bereit bist, sichere deinen Funken auf der Warteliste." },
+      "features": { "title": "Die Wissenschaft", "body": "Fünf Säulen tragen jedes Match. Lies jede Karte und betritt dann das Bond Lab, um die globale Ladung zu spüren." },
+      "bond": { "title": "Bond Lab", "body": "Zieh die beiden Atome zusammen. Jede Anmeldung erhöht die Ladung. Bei 100 Prozent zündet der erste Funke weltweit." },
+      "voice": { "title": "Stimm-DNA", "body": "Sag drei beliebige Worte. Wir verwandeln deine Stimme in ein einzigartiges Sigill — auf deinem Gerät verarbeitet, nie hochgeladen." },
+      "quiz": { "title": "Element-Quiz", "body": "Beantworte drei Fragen, entdecke dein Element und teile es oder finde ein ergänzendes." },
+      "waitlist": { "title": "Die Warteliste", "body": "Gib deine E-Mail ein, um deinen Platz zu sichern. Basis-Chemie ist immer kostenlos; Freunde einladen bringt dich nach vorn." },
+      "faq": { "title": "Gute Fragen", "body": "Tippe eine Frage an, um sie zu öffnen. Alles zu Launch, Preisen und Privatsphäre findest du hier." }
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "sub": "Melde dich an, damit dein Funke auf allen Geräten sicher ist",
+      "google": "Weiter mit Google",
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "submit": "Anmelden",
+      "or": "oder",
+      "signup": "Konto erstellen",
+      "noAccount": "Neu bei ourchemistry?",
+      "privacy": "Stimme zuerst, ohne Fotos. Wir verkaufen deine Daten nie."
+    }
+  },
+  "es": {
+    "features": {
+      "voiceDna": "Matching por ADN de voz",
+      "voiceDnaSub": "Tres palabras habladas se convierten en una firma acústica única. Matcheamos resonancia, no rostros.",
+      "element": "Compatibilidad de elementos",
+      "elementSub": "Descubre tu elemento y ve qué vínculos son más profundos: química que puedes medir."
+    },
+    "tutorial": {
+      "open": "Cómo funciona",
+      "close": "Entendido",
+      "on": "Estás en",
+      "hero": { "title": "Bienvenido a ourchemistry", "body": "Sin swipe y sin fotos. Usa las flechas o el dock inferior para viajar entre mundos. Cuando estés listo, guarda tu chispa en la lista de espera." },
+      "features": { "title": "La Ciencia", "body": "Cinco pilares impulsan cada match. Lee cada tarjeta y luego entra al Bond Lab para sentir la carga global." },
+      "bond": { "title": "Bond Lab", "body": "Junta los dos átomos. Cada registro suma a la carga global. Al llegar al 100 por ciento, la primera chispa se enciende." },
+      "voice": { "title": "ADN de voz", "body": "Di tres palabras. Convertimos tu voz en un sello único, procesado en tu dispositivo y nunca subido." },
+      "quiz": { "title": "Test de elementos", "body": "Responde tres preguntas para descubrir tu elemento, luego compártelo o matchea con uno complementario." },
+      "waitlist": { "title": "La lista de espera", "body": "Ingresa tu email para reservar tu lugar. La química básica es gratis; invitar amigos te sube en la lista." },
+      "faq": { "title": "Buenas preguntas", "body": "Toca una pregunta para abrirla. Todo sobre lanzamiento, precios y privacidad está aquí." }
+    },
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "sub": "Inicia sesión para mantener tu chispa segura en tus dispositivos",
+      "google": "Continuar con Google",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "or": "o",
+      "signup": "Crear cuenta",
+      "noAccount": "¿Nuevo en ourchemistry?",
+      "privacy": "Voz primero, sin fotos. Nunca vendemos tus datos."
+    }
+  }
+}

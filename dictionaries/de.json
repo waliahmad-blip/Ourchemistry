@@ -27,7 +27,11 @@
     "trial": "7-Tage-Bindungstest",
     "trialSub": "Strukturierte taegliche Prompts fuer genau 7 Tage.",
     "matrimony": "Doppelblind-Ehe",
-    "matrimonySub": "Fuer ernste Bindung: du meldest Absicht, wir schuetzen deine Privatsphaere."
+    "matrimonySub": "Fuer ernste Bindung: du meldest Absicht, wir schuetzen deine Privatsphaere.",
+    "voiceDna": "Stimm-DNA-Matching",
+    "voiceDnaSub": "Drei gesprochene Worte werden zu einer einzigartigen akustischen Signatur. Wir matchen Resonanz, nicht Gesichter.",
+    "element": "Element-Kompatibilität",
+    "elementSub": "Entdecke dein Element und sieh, welche Bindungen am tiefsten gehen — Chemie, die du messen kannst."
   },
   "bond": {
     "title": "Bindungs-Lab",
@@ -129,5 +133,50 @@
         "t": "Das Rückgrat-Element. Jede echte Bindung, die du formst, wird tragfähig."
       }
     ]
+  },
+  "tutorial": {
+    "open": "So funktioniert es",
+    "close": "Verstanden",
+    "on": "Du bist gerade bei",
+    "hero": {
+      "title": "Willkommen bei ourchemistry",
+      "body": "Ohne Swipen, ohne Fotos. Nutze die Pfeiltasten oder das Dock unten, um zwischen Welten zu reisen. Wenn du bereit bist, sichere deinen Funken auf der Warteliste."
+    },
+    "features": {
+      "title": "Die Wissenschaft",
+      "body": "Fünf Säulen tragen jedes Match. Lies jede Karte und betritt dann das Bond Lab, um die globale Ladung zu spüren."
+    },
+    "bond": {
+      "title": "Bond Lab",
+      "body": "Zieh die beiden Atome zusammen. Jede Anmeldung erhöht die Ladung. Bei 100 Prozent zündet der erste Funke weltweit."
+    },
+    "voice": {
+      "title": "Stimm-DNA",
+      "body": "Sag drei beliebige Worte. Wir verwandeln deine Stimme in ein einzigartiges Sigill — auf deinem Gerät verarbeitet, nie hochgeladen."
+    },
+    "quiz": {
+      "title": "Element-Quiz",
+      "body": "Beantworte drei Fragen, entdecke dein Element und teile es oder finde ein ergänzendes."
+    },
+    "waitlist": {
+      "title": "Die Warteliste",
+      "body": "Gib deine E-Mail ein, um deinen Platz zu sichern. Basis-Chemie ist immer kostenlos; Freunde einladen bringt dich nach vorn."
+    },
+    "faq": {
+      "title": "Gute Fragen",
+      "body": "Tippe eine Frage an, um sie zu öffnen. Alles zu Launch, Preisen und Privatsphäre findest du hier."
+    }
+  },
+  "login": {
+    "title": "Willkommen zurück",
+    "sub": "Melde dich an, damit dein Funke auf allen Geräten sicher ist",
+    "google": "Weiter mit Google",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "submit": "Anmelden",
+    "or": "oder",
+    "signup": "Konto erstellen",
+    "noAccount": "Neu bei ourchemistry?",
+    "privacy": "Stimme zuerst, ohne Fotos. Wir verkaufen deine Daten nie."
   }
 }

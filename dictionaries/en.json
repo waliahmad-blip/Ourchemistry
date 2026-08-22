@@ -27,7 +27,11 @@
     "trial": "The 7-Day Bond Trial",
     "trialSub": "Structured daily prompts for exactly 7 days.",
     "matrimony": "Double-Blind Matrimony",
-    "matrimonySub": "For serious commitment: you signal intent, we protect your privacy."
+    "matrimonySub": "For serious commitment: you signal intent, we protect your privacy.",
+    "voiceDna": "Voice DNA Matching",
+    "voiceDnaSub": "Three spoken words become a one-of-a-kind acoustic signature. We match resonance, not faces.",
+    "element": "Element Compatibility",
+    "elementSub": "Discover your element and see which bonds run deepest — chemistry you can actually measure."
   },
   "bond": {
     "title": "The Bond Lab",
@@ -129,5 +133,50 @@
         "t": "The backbone element. Every real bond you form becomes structural."
       }
     ]
+  },
+  "tutorial": {
+    "open": "How this works",
+    "close": "Got it",
+    "on": "You are on",
+    "hero": {
+      "title": "Welcome to ourchemistry",
+      "body": "Swipe-free and photo-free. Use the arrow keys or the dock below to travel between worlds. When you are ready, save your spark on the waitlist."
+    },
+    "features": {
+      "title": "The Science",
+      "body": "Five pillars power every match. Read each card, then step into the Bond Lab to feel the global charge build."
+    },
+    "bond": {
+      "title": "Bond Lab",
+      "body": "Drag the two atoms together. Every sign-up adds to the global charge. Reach 100 percent and the first spark lights up worldwide."
+    },
+    "voice": {
+      "title": "Voice DNA",
+      "body": "Say any three words. We turn your voice into a unique sigil, processed on your device and never uploaded."
+    },
+    "quiz": {
+      "title": "Element Quiz",
+      "body": "Answer three quick questions to discover your element, then share it or match with a complementary one."
+    },
+    "waitlist": {
+      "title": "The Waitlist",
+      "body": "Enter your email to reserve your place. Core chemistry is always free, and inviting friends moves you up the list."
+    },
+    "faq": {
+      "title": "Good Questions",
+      "body": "Tap any question to expand it. Everything about launch, pricing and privacy lives here."
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "sub": "Sign in to keep your spark safe across devices",
+    "google": "Continue with Google",
+    "email": "Email address",
+    "password": "Password",
+    "submit": "Sign in",
+    "or": "or",
+    "signup": "Create an account",
+    "noAccount": "New to ourchemistry?",
+    "privacy": "Voice-first, photo-free. We never sell your data."
   }
 }
