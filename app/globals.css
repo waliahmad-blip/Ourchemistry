@@ -214,3 +214,11 @@ input[type="range"].bond-range::-moz-range-thumb {
   }
   [data-rv] { opacity: 1; transform: none; }
 }
+
+/* ── starfield visibility fix: stars above aurora layers, below content ── */
+body::before, body::after, .bg, .bg::before, .bg::after { z-index: -3 !important; }
+.oc-stars { z-index: -2 !important; }
+
+/* ── layer force-fix: aurora pseudo-layers pinned below the stars ── */
+body::before, body::after { position: fixed !important; z-index: -4 !important; }
+.ecg { opacity: 0.85 !important; }

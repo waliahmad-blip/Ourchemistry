@@ -16,7 +16,6 @@ export default function Tutorial({ page, dict }) {
 
   useEffect(() => setMounted(true), []);
 
-  /* reset per station; ghost once per station */
   useEffect(() => {
     setMode(null);
     if (!info?.title) return;
@@ -27,7 +26,6 @@ export default function Tutorial({ page, dict }) {
     return () => clearTimeout(t);
   }, [page]);
 
-  /* ghost fades away on its own */
   useEffect(() => {
     if (mode !== 'ghost') return;
     const t = setTimeout(() => {
@@ -37,7 +35,6 @@ export default function Tutorial({ page, dict }) {
     return () => clearTimeout(t);
   }, [mode, page]);
 
-  /* Esc closes pinned */
   useEffect(() => {
     if (mode !== 'pinned') return;
     const esc = (e) => e.key === 'Escape' && close();
@@ -49,10 +46,8 @@ export default function Tutorial({ page, dict }) {
   const close = () => { setMode(null); markSeen(); };
 
   if (!mounted || !info?.title) return null;
-
   const ghost = mode === 'ghost';
 
-  /* portal → document.body escapes transformed ancestors (the half-cut bug) */
   return createPortal(
     <>
       <button
@@ -73,9 +68,7 @@ export default function Tutorial({ page, dict }) {
             exit={{ opacity: 0, y: -16, filter: 'blur(10px)' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className={`fixed bottom-40 right-4 z-[90] w-[min(20rem,calc(100vw-2rem))] max-h-[55vh] overflow-y-auto rounded-2xl border p-5 shadow-2xl backdrop-blur-2xl ${
-              ghost
-                ? 'border-teal-300/20 bg-[#0b1020]/70'
-                : 'border-white/10 bg-[#0b1020]/90'
+              ghost ? 'border-teal-300/20 bg-[#0b1020]/70' : 'border-white/10 bg-[#0b1020]/90'
             }`}
           >
             <motion.div
@@ -87,7 +80,6 @@ export default function Tutorial({ page, dict }) {
               </p>
               <h3 className="mb-2 text-base font-medium text-white">{info.title}</h3>
               <p className="text-[13px] leading-relaxed text-white/60">{info.body}</p>
-
               <div className="mt-4 flex items-center justify-between">
                 <span className="font-mono text-[9px] uppercase tracking-widest text-white/25">
                   {ghost ? '···' : page}

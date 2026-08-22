@@ -21,10 +21,11 @@ export default function Aurora({ view }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2 }}
-      className="pointer-events-none fixed inset-0 -z-[5]"
+      className="pointer-events-none fixed inset-0"
       style={{
-        background: `radial-gradient(60% 50% at 20% 15%, ${a}16, transparent 60%),
-                     radial-gradient(50% 45% at 80% 80%, ${b}12, transparent 60%)`,
+        zIndex: -1,
+        background: `radial-gradient(60% 50% at 20% 15%, ${a}1e, transparent 60%),
+                     radial-gradient(50% 45% at 80% 80%, ${b}16, transparent 60%)`,
       }}
     />
   );

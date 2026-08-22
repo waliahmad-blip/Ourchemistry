@@ -13,6 +13,9 @@ import LoginModal from './LoginModal';
 import Starfield from './Starfield';
 import Aurora from './Aurora';
 import ScienceDetail from './ScienceDetail';
+import TwoHeartsSync from './TwoHeartsSync';
+import Comet from './Comet';
+import FusionLab from './FusionLab';
 import { EyeOff, AudioLines, Link2, HeartHandshake, FlaskConical } from 'lucide-react';
 
 /* Rotating word that cycles a list of translated synonyms */
@@ -36,14 +39,15 @@ function RotatingLex({ words }) {
   return <span className={`lex grad-text ${swap ? 'swap' : ''}`}>{list[i]}</span>;
 }
 
-/* Living heartbeat divider — new waveform on every page view */
+/* Living heartbeat divider — bright, new rhythm every view */
 function Ecg() {
   return (
     <div
-      className="ecg fixed top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none"
+      className="fixed top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none"
+      style={{ opacity: 0.85, zIndex: 0 }}
       aria-hidden="true"
     >
-      <Heartline beats={7} height={40} from="#5eead4" to="#a78bfa" />
+      <Heartline beats={7} height={44} from="#5eead4" to="#a78bfa" />
     </div>
   );
 }
@@ -65,7 +69,10 @@ function Hero({ dict }) {
         <RotatingLex words={dict.hero.rot} />
       </p>
       <p className="mt-6 max-w-xl text-white/70 text-lg">{dict.hero.sub}</p>
-      <div className="mt-10 flex gap-4 flex-wrap justify-center">
+      <div className="mt-4 w-full max-w-lg px-4">
+        <TwoHeartsSync />
+      </div>
+      <div className="mt-8 flex gap-4 flex-wrap justify-center">
         <button
           onClick={() => setView('waitlist')}
           className="btn-shine bg-[#5eead4] text-[#04060f] font-semibold px-7 py-3 rounded-full hover:scale-105 transition"
@@ -94,7 +101,6 @@ function Features({ dict }) {
     { key: 'matrimony', Icon: HeartHandshake, color: '#ff8fb2' },
     { key: 'element',   Icon: FlaskConical,   color: '#67e8f9' },
   ];
-  // Row 1: cards 1–3 (span 2 of 6) · Row 2: cards 4–5 (span 3 of 6) — balanced 3+2
   const span = (i) =>
     i === 4 ? 'sm:col-span-2 md:col-span-3' : i < 3 ? 'md:col-span-2' : 'md:col-span-3';
 
@@ -196,6 +202,7 @@ export default function ConstellationStage({ dict, locale }) {
   const view = useAppStore((s) => s.view);
   const setView = useAppStore((s) => s.setView);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [fusionOpen, setFusionOpen] = useState(false);
 
   const navItems = [
     { id: 'hero', label: dict.nav.home },
@@ -233,7 +240,14 @@ export default function ConstellationStage({ dict, locale }) {
       >
         {dict?.login?.submit ?? 'Sign in'}
       </button>
+      <button
+        onClick={() => setFusionOpen(true)}
+        className="fixed bottom-24 left-4 z-[45] glass rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ffd7a1] transition hover:brightness-125"
+      >
+        ⚡ Fusion
+      </button>
       <Ecg />
+      <Comet />
       <Tutorial page={view} dict={dict} />
 
       <nav
@@ -272,6 +286,7 @@ export default function ConstellationStage({ dict, locale }) {
         </motion.div>
       </AnimatePresence>
 
+      <FusionLab open={fusionOpen} onClose={() => setFusionOpen(false)} />
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} dict={dict} />
     </>
   );
