@@ -2,12 +2,16 @@
   "name": "ourchemistry",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "description": "ourchemistry.ai - The Science of Us. Voice-first dating and matrimony. 10 languages, no-scroll constellation.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:engines": "node scripts/verify-engines.mjs",
+    "test:apis": "node scripts/test-apis.mjs",
+    "test": "node scripts/verify-engines.mjs && node scripts/test-apis.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.11.17",

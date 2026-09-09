@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Heartline from './Heartline';
+import { playHeartPulse, playResonanceChime } from '../lib/audio/soundscape';
 
 function Sparks({ color }) {
   const parts = useMemo(
@@ -39,9 +40,22 @@ export default function TwoHeartsSync() {
   useEffect(() => {
     if (reduce) return;
     let t;
-    if (phase === 'apart') t = setTimeout(() => setPhase('approach'), 3800);
-    else if (phase === 'approach') t = setTimeout(() => setPhase('fuse'), 2100);
-    else t = setTimeout(() => { setPhase('apart'); setSeed((s) => s + 1); }, 3000);
+    if (phase === 'apart') {
+      t = setTimeout(() => {
+        playHeartPulse(0.8);
+        setPhase('approach');
+      }, 3800);
+    } else if (phase === 'approach') {
+      t = setTimeout(() => {
+        playResonanceChime(528);
+        setPhase('fuse');
+      }, 2100);
+    } else {
+      t = setTimeout(() => {
+        setPhase('apart');
+        setSeed((s) => s + 1);
+      }, 3000);
+    }
     return () => clearTimeout(t);
   }, [phase, seed, reduce]);
 

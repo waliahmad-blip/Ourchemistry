@@ -97,6 +97,55 @@ node scripts/unwrap-files.js        # repair them
 node scripts/fix-and-extend-dicts.js# validate + merge dictionary keys
 ```
 
+## 🧠 Sovereign Architectural Engines
+
+### 1. In-Browser Audio DSP & 64-D Voice DNA (`lib/dsp/pitchDetector.js`)
+- **YIN Pitch Tracking Algorithm**: Extracts true physical fundamental frequency ($F_0$) in Hz from raw time-domain mic buffers.
+- **Spectral Centroid & Timbre**: Computes frequency-weighted centroid reflecting vocal warmth and resonance.
+- **Acoustic Hash & Sigil Determinism**: Generates a reproducible 64-dimensional acoustic vector and 32-bit seed powering the biometric visual sigil without server uploads.
+
+### 2. Zero-Asset Procedural Web Audio Soundscape (`lib/audio/soundscape.js`)
+- 100% procedural Web Audio synthesis with 0 asset downloads.
+- Sub-bass cardiac heartbeats (75 Hz -> 36 Hz exponential glide), 528 Hz celestial resonance chimes, and crystalline fusion shimmer sparks.
+
+### 3. AI Guardrails & Anti-PII Defense (`lib/security/guardrails.js`)
+- System prompt exfiltration / injection prevention.
+- Automatic redaction of domestic and international phone numbers, email addresses, and social handles during early connection stages.
+
+### 4. 7-Day Bond Protocol State Machine (`lib/bond/bondStateMachine.js`)
+- Sequential unlock curriculum (Voice Capsules -> Values Architecture -> Resonance Texting -> Portrait Unblur).
+- Reciprocal gating and double-blind simultaneous resolution with zero-rejection architecture.
+
+### 5. Sovereign Cryptographic Vanish Engine (`lib/security/cryptoVanish.js`)
+- Ephemeral data zeroization in under 60 seconds.
+- Verifiable SHA-256 Merkle tree calculation generating immutable flight receipts (`RCPT-VANISH-...`).
+
+### 6. Database & Vector Match Engine (`lib/db/`)
+- Drizzle ORM schema for PostgreSQL + `pgvector` (64-D acoustic embeddings).
+- Cosine similarity matching engine for Voice DNA resonance.
+
+---
+
+## 📡 API Endpoints
+
+- `POST /api/catalyst`: Intelligent AI Concierge endpoint with multi-language awareness and guardrails.
+- `GET /api/bond` & `POST /api/bond`: 7-Day Protocol progression and double-blind resolution.
+- `POST /api/vanish`: One-tap cryptographic erasure with Merkle flight records.
+- `GET /api/waitlist` & `POST /api/waitlist`: Queue position, element assignment (*Aqua, Ignis, Terra, Ventus*), and referral boosts (+500 spots).
+
+---
+
+## 🧪 Verification & Testing
+
+```bash
+# Run full verification suite (Engines + APIs)
+npm test
+
+# Run individual suites
+npm run test:engines
+npm run test:apis
+```
+
 ## 🗓 Launch
 
 First spark: **February 14, 2027**.

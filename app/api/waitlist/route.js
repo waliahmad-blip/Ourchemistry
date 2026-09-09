@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server.js';
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -57,13 +57,14 @@ async function readAll() {
       const raw = await fs.readFile(file, 'utf-8');
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed.count === 'number' && Array.isArray(parsed.emails)) {
+        if (!Array.isArray(parsed.members)) parsed.members = [];
         return parsed;
       }
     } catch {
       /* not here, try next */
     }
   }
-  return { count: START_COUNT, emails: [] };
+  return { count: START_COUNT, emails: [], members: [] };
 }
 
 async function writeAll(data) {
@@ -85,6 +86,12 @@ function clientIp(request) {
   if (xf) return xf.split(',')[0].trim();
   return request.headers.get('x-real-ip') || 'unknown';
 }
+
+function generateRefCode() {
+  return 'OU-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+}
+
+const ELEMENTS = ['Aqua', 'Ignis', 'Terra', 'Ventus'];
 
 /* --------------------------------- routes ------------------------------- */
 export async function POST(request) {
@@ -112,20 +119,53 @@ export async function POST(request) {
     return NextResponse.json({ ok: false, error: 'invalid_email' }, { status: 400 });
   }
 
+  const referralBy = typeof body.referralBy === 'string' ? body.referralBy.trim().toUpperCase() : null;
+
   try {
     const data = await readAll();
-    if (!data.emails.includes(email)) {
-      data.emails.push(email);
+    let member = data.members.find((m) => m.email === email);
+
+    if (!member) {
       data.count += 1;
+      const assignedRefCode = generateRefCode();
+      const assignedElement = ELEMENTS[data.count % ELEMENTS.length];
+
+      member = {
+        email,
+        refCode: assignedRefCode,
+        referredBy: referralBy || null,
+        referralCount: 0,
+        element: assignedElement,
+        queueRank: data.count,
+        joinedAt: new Date().toISOString(),
+      };
+
+      data.emails.push(email);
+      data.members.push(member);
+
+      if (referralBy) {
+        const referrer = data.members.find((m) => m.refCode === referralBy);
+        if (referrer) {
+          referrer.referralCount = (referrer.referralCount || 0) + 1;
+          referrer.queueRank = Math.max(1, (referrer.queueRank || data.count) - 500);
+        }
+      }
+
       try {
         await writeAll(data);
       } catch (persistErr) {
-        // Serverless filesystem unavailable: keep the signup flowing,
-        // the count stays consistent in-memory for this instance.
         console.warn('[waitlist] persistence unavailable:', persistErr.message);
       }
     }
-    return NextResponse.json({ ok: true, count: data.count });
+
+    return NextResponse.json({
+      ok: true,
+      count: data.count,
+      refCode: member.refCode,
+      elementNo: member.queueRank,
+      element: member.element,
+      referralCount: member.referralCount || 0,
+    });
   } catch (err) {
     console.error('[waitlist] error:', err);
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });

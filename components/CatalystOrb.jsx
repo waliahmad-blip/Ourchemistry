@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { useAppStore } from '../lib/store';
 
 const BRAIN = [
   { re: /launch|when|date|live/i, a: 'First spark lands February 14, 2027. Waitlist members ignite in waves before that — catalyze friends to move forward.' },
@@ -16,6 +17,7 @@ const BRAIN = [
 const CHIPS = ['Launch date?', 'Voice privacy', 'Bond trial', 'Resonance texting'];
 
 export default function CatalystOrb({ dict }) {
+  const locale = useAppStore((s) => s.locale);
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState([
     { from: 'bot', text: 'I am Catalyst ⚗ Ask me anything about ourchemistry.' },
@@ -37,17 +39,34 @@ export default function CatalystOrb({ dict }) {
       : 'Beautiful question. We built ourchemistry for depth, not dopamine. Ask me about the launch, privacy, or the bond trial.';
   };
 
-  const ask = (text) => {
+  const ask = async (text) => {
     const clean = (text || '').trim();
     if (!clean) return;
     setMsgs((m) => [...m, { from: 'user', text: clean }]);
     setInput('');
     setTyping(true);
+
+    try {
+      const res = await fetch('/api/catalyst', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: clean, locale }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setTyping(false);
+        setMsgs((m) => [...m, { from: 'bot', text: data.reply || reply(clean) }]);
+        return;
+      }
+    } catch {
+      // Graceful offline fallback
+    }
+
     const answer = reply(clean);
     setTimeout(() => {
       setTyping(false);
       setMsgs((m) => [...m, { from: 'bot', text: answer }]);
-    }, 650);
+    }, 600);
   };
 
   return (

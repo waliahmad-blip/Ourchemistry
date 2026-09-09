@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, RotateCcw } from 'lucide-react';
+import { playFusionSpark } from '../lib/audio/soundscape';
 
 const ELEMENTS = [
   { id: 'aqua',  label: 'Aqua',  color: '#67e8f9', x: -150, y: -60 },
@@ -45,7 +46,10 @@ export default function FusionLab({ open, onClose }) {
         const next = [...p, el.id];
         if (next.length === 2) {
           const key = [...next].sort().join('+');
-          setTimeout(() => setResult(RESULTS[key] ?? { name: 'Mystery Bond', pct: 77, line: 'Undocumented chemistry.' }), 650);
+          setTimeout(() => {
+            playFusionSpark();
+            setResult(RESULTS[key] ?? { name: 'Mystery Bond', pct: 77, line: 'Undocumented chemistry.' });
+          }, 650);
         }
         return next;
       });

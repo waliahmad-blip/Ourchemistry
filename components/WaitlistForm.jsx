@@ -1,19 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppStore } from '../lib/store';
-
-function makeRefCode() {
-  return 'OU-' + Math.random().toString(36).slice(2, 6).toUpperCase();
-}
 
 export default function WaitlistForm({ dict }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
   const [refCode, setRefCode] = useState('');
   const [elementNo, setElementNo] = useState(null);
+  const [elementName, setElementName] = useState(null);
+  const [incomingRef, setIncomingRef] = useState(null);
   const [copied, setCopied] = useState(false);
   const waitlistCount = useAppStore((s) => s.waitlistCount);
   const setWaitlistCount = useAppStore((s) => s.setWaitlistCount);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref) setIncomingRef(ref);
+    }
+  }, []);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -23,15 +29,15 @@ export default function WaitlistForm({ dict }) {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, referralBy: incomingRef }),
       });
       if (!res.ok) throw new Error('fail');
       const json = await res.json().catch(() => ({}));
       const newCount = typeof json.count === 'number' ? json.count : waitlistCount + 1;
       setWaitlistCount(newCount);
-      setElementNo(newCount);
-      const code = makeRefCode();
-      setRefCode(code);
+      setElementNo(json.elementNo || newCount);
+      setElementName(json.element || 'Aqua');
+      setRefCode(json.refCode || 'OU-' + Math.random().toString(36).slice(2, 6).toUpperCase());
       setStatus('success');
       if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
     } catch {
@@ -84,7 +90,10 @@ export default function WaitlistForm({ dict }) {
           <p className="text-white/60 text-sm mb-1">{dict.waitlist.success}</p>
           <p className="text-white/50 text-sm mb-6">
             You are element{' '}
-            <span className="font-mono text-[#ffd7a1]">No. {elementNo?.toLocaleString()}</span>
+            <span className="font-mono text-[#ffd7a1]">
+              {elementName ? `${elementName} • No. ` : 'No. '}
+              {elementNo?.toLocaleString()}
+            </span>
           </p>
           <div className="border border-dashed border-white/15 rounded-2xl p-4 text-left text-sm">
             <p className="text-white/60 mb-2">🧬 Catalyze 3 friends → jump 500 places.</p>

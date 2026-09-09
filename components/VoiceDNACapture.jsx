@@ -1,15 +1,26 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import SigilArt from './SigilArt';
+import { useAppStore } from '../lib/store';
+import {
+  yinPitchDetector,
+  analyzePitchStability,
+  generateVoiceDnaVector,
+} from '../lib/dsp/pitchDetector';
 
 export default function VoiceDNACapture({ dict }) {
+  const setVoiceDna = useAppStore((s) => s.setVoiceDna);
   const [recording, setRecording] = useState(false);
   const [captured, setCaptured] = useState(false);
   const [seed, setSeed] = useState(0);
   const [level, setLevel] = useState(0);
+  const [dnaMetrics, setDnaMetrics] = useState(null);
+
   const mediaRef = useRef(null);
   const ctxRef = useRef(null);
   const rafRef = useRef(0);
+  const pitchHistoryRef = useRef([]);
+  const spectrumSampleRef = useRef([]);
 
   const cleanup = () => {
     cancelAnimationFrame(rafRef.current);
@@ -30,8 +41,18 @@ export default function VoiceDNACapture({ dict }) {
     cleanup();
     setRecording(false);
     setCaptured(true);
-    setSeed(Math.floor(Math.random() * 1e9));
-    if (navigator.vibrate) navigator.vibrate(40);
+
+    const stabilityAnalysis = analyzePitchStability(pitchHistoryRef.current);
+    const dnaResult = generateVoiceDnaVector({
+      medianPitch: stabilityAnalysis.medianPitch,
+      stability: stabilityAnalysis.stability,
+      frequencySpectrum: spectrumSampleRef.current,
+    });
+
+    setSeed(dnaResult.deterministicSeed);
+    setDnaMetrics(dnaResult);
+    setVoiceDna(dnaResult);
+    if (navigator.vibrate) navigator.vibrate([60, 40, 80]);
   };
 
   const toggle = async () => {
@@ -41,28 +62,53 @@ export default function VoiceDNACapture({ dict }) {
     }
     if (!navigator.mediaDevices?.getUserMedia) {
       setCaptured(true);
-      setSeed(Math.floor(Math.random() * 1e9));
+      const fallback = generateVoiceDnaVector({ medianPitch: 160, stability: 0.85 });
+      setSeed(fallback.deterministicSeed);
+      setDnaMetrics(fallback);
+      setVoiceDna(fallback);
       return;
     }
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true },
+      });
       const Ctx = window.AudioContext || window.webkitAudioContext;
       const audioCtx = new Ctx();
       const analyser = audioCtx.createAnalyser();
-      analyser.fftSize = 256;
+      analyser.fftSize = 1024;
+      analyser.smoothingTimeConstant = 0.8;
+
       audioCtx.createMediaStreamSource(stream).connect(analyser);
       const data = new Uint8Array(analyser.frequencyBinCount);
+      const timeData = new Float32Array(analyser.fftSize);
 
       mediaRef.current = stream;
       ctxRef.current = audioCtx;
+      pitchHistoryRef.current = [];
+      spectrumSampleRef.current = [];
       setRecording(true);
       setCaptured(false);
 
+      let frameCount = 0;
       const loop = () => {
         analyser.getByteFrequencyData(data);
+        analyser.getFloatTimeDomainData(timeData);
+
         let sum = 0;
         for (let i = 0; i < data.length; i++) sum += data[i];
-        setLevel(Math.min(1, sum / data.length / 128));
+        const curLevel = Math.min(1, sum / data.length / 128);
+        setLevel(curLevel);
+
+        frameCount++;
+        if (frameCount % 4 === 0 && curLevel > 0.05) {
+          const detected = yinPitchDetector(timeData, audioCtx.sampleRate);
+          if (detected.pitchHz > 65) {
+            pitchHistoryRef.current.push(detected.pitchHz);
+          }
+          if (spectrumSampleRef.current.length < 32) {
+            spectrumSampleRef.current = Array.from(data.slice(0, 32));
+          }
+        }
         rafRef.current = requestAnimationFrame(loop);
       };
       loop();
@@ -76,7 +122,10 @@ export default function VoiceDNACapture({ dict }) {
       }, 15000);
     } catch {
       setCaptured(true);
-      setSeed(Math.floor(Math.random() * 1e9));
+      const fallback = generateVoiceDnaVector({ medianPitch: 160, stability: 0.85 });
+      setSeed(fallback.deterministicSeed);
+      setDnaMetrics(fallback);
+      setVoiceDna(fallback);
     }
   };
 
@@ -126,7 +175,18 @@ export default function VoiceDNACapture({ dict }) {
       </button>
 
       {captured && (
-        <p className="mt-4 text-[#5eead4] font-semibold">✓ {dict.voice.capture}</p>
+        <div className="mt-4 flex flex-col items-center gap-1.5" style={{ animation: 'pop .4s ease' }}>
+          <p className="text-[#5eead4] font-semibold">✓ {dict.voice.capture}</p>
+          {dnaMetrics && (
+            <div className="flex items-center gap-2 font-mono text-[11px] text-white/60">
+              <span className="text-[#ffd7a1]">Resonance {dnaMetrics.resonance}%</span>
+              <span>•</span>
+              <span className="text-teal-300">Warmth {dnaMetrics.warmth}%</span>
+              <span>•</span>
+              <span className="text-pink-300/80">{dnaMetrics.acousticHash.slice(0, 16)}…</span>
+            </div>
+          )}
+        </div>
       )}
 
       <div className="mt-10 glass rounded-2xl p-4 max-w-md">

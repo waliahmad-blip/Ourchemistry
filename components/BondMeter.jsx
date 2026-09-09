@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
+import { playResonanceChime, playHeartPulse } from '../lib/audio/soundscape';
 
 export default function BondMeter({ dict }) {
   const [p, setP] = useState(0);
@@ -24,7 +25,10 @@ export default function BondMeter({ dict }) {
     if (v >= 100 && !bonded) {
       setBonded(true);
       setScore(92 + Math.floor(Math.random() * 8));
+      playResonanceChime(660);
       if (navigator.vibrate) navigator.vibrate([80, 50, 80, 50, 120]);
+    } else if (v > 50 && v % 25 === 0) {
+      playHeartPulse(0.6);
     }
     if (v < 100) setBonded(false);
   };
