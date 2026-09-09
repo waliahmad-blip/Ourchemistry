@@ -1,0 +1,60 @@
+<!-- PAGE 9: DATA LAYER, DRIZZLE & VECTOR INDEX -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 08: DATA & VECTOR LAYER</div>
+  </div>
+
+  <h1><span class="sec-num">08.</span> Data Layer, Drizzle ORM & Vector Match</h1>
+  <p class="lead">
+    Persistence is managed by PostgreSQL with the <code>pgvector</code> extension for high-performance acoustic vector search, typed through Drizzle ORM schemas defined in <code>lib/db/schema.js</code>.
+  </p>
+
+  <h2>Relational & Vector Schema Definition</h2>
+  <div class="formula-box">
+<span class="keyword">export const</span> <span class="accent">voicePrintsTable</span> = {
+  name: <span class="accent">'voice_prints'</span>,
+  columns: {
+    id:                 { type: <span class="accent">'uuid'</span>, primaryKey: true },
+    userId:             { type: <span class="accent">'uuid'</span>, references: <span class="accent">'users.id'</span>, notNull: true },
+    medianPitchHz:      { type: <span class="accent">'numeric(6, 2)'</span>, notNull: true },
+    stabilityScore:     { type: <span class="accent">'numeric(4, 3)'</span>, notNull: true },
+    spectralCentroidHz: { type: <span class="accent">'numeric(6, 2)'</span>, notNull: true },
+    acousticHash:       { type: <span class="accent">'text'</span>, notNull: true },
+    deterministicSeed:  { type: <span class="accent">'bigint'</span>, notNull: true },
+    vector64:           { type: <span class="accent">'vector(64)'</span>, notNull: true }, <span class="comment">// pgvector acoustic embedding</span>
+    createdAt:          { type: <span class="accent">'timestamp'</span>, default: <span class="accent">'now()'</span> }
+  }
+};
+  </div>
+
+  <h2>Cosine Similarity Acoustic Matching</h2>
+  <p>
+    Vector proximity between candidates' Voice DNA embeddings is computed via Cosine Similarity:
+  </p>
+  <div class="formula-box">
+Cosine Similarity = [ A &bull; B ] / [ ||A|| * ||B|| ] = [ &sum;_{i=1}^{64} A_i * B_i ] / [ sqrt(&sum; A_i^2) * sqrt(&sum; B_i^2) ]
+Matches with similarity &ge; 0.82 display high vocal harmonic affinity.
+  </div>
+
+  <h2>Viral Waitlist Referral Loop</h2>
+  <div class="grid-2">
+    <div class="card highlight">
+      <div class="card-title">Atomic Referral Logic</div>
+      <div class="card-body">
+        Users receive a unique <code>OU-XXXX</code> code upon registration. Incoming traffic with <code>?ref=CODE</code> automatically awards +500 position rank leaps to the referrer, driving organic referral loops while auto-assigning chemical element affinities (<em>Aqua, Ignis, Terra, Ventus</em>).
+      </div>
+    </div>
+    <div class="card purple">
+      <div class="card-title">Resilient Persistence Architecture</div>
+      <div class="card-body">
+        The waitlist endpoint (<code>/api/waitlist</code>) features dual persistence: when <code>DATABASE_URL</code> is connected, it commits to PostgreSQL; in serverless/offline environments, it falls back to atomic write-locked JSON files without throwing 500 errors.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 9</div>
+  </div>
+</div>

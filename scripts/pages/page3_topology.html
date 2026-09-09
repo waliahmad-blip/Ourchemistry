@@ -1,0 +1,80 @@
+<!-- PAGE 3: SYSTEM TOPOLOGY & EDGE STACK -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 02: SYSTEM TOPOLOGY</div>
+  </div>
+
+  <h1><span class="sec-num">02.</span> High-Level Topology & Edge Stack</h1>
+  <p class="lead">
+    The application architecture follows a distributed, zero-trust edge topology. Client-side digital signal processing (DSP) performs biometric feature extraction on the user's device, while edge serverless handlers enforce strict cryptographic guardrails, state-machine progression, and vector storage.
+  </p>
+
+  <h2>Edge Architecture Topology Diagram</h2>
+  <div class="formula-box">
+<span class="keyword">[CLIENT HARDWARE LAYER]</span>
+  &bull; Microphone &rarr; Web Audio Context (AudioWorklet / ScriptProcessor)
+  &bull; YIN Pitch Detector Engine ($F_0$ Fundamental Hz Extraction)
+  &bull; Fast Fourier Transform (FFT) &rarr; Spectral Centroid & Vocal Warmth
+  &bull; Deterministic 64-D Acoustic Embedding Seed Derivation &rarr; SigilArt Canvas
+
+                     &darr; (Acoustic Vector & Refined Hash Only &mdash; Zero Raw Audio)
+
+<span class="accent">[EDGE COMPUTATION GATEWAY (Next.js 14 App Router)]</span>
+  &bull; /api/catalyst &rarr; AI Guardrail Shield (Anti-PII Redaction + Jailbreak Defenses)
+  &bull; /api/bond     &rarr; 7-Day Bond Protocol State Machine (Reciprocal Gating)
+  &bull; /api/vanish   &rarr; Ephemeral Shredding & SHA-256 Merkle Flight Records
+  &bull; /api/waitlist &rarr; Atomic Referral Engine & Viral Queue Rank Booster
+
+                     &darr; (Encrypted Transport via TLS 1.3 / mTLS)
+
+<span class="comment">[SOVEREIGN DATA PERSISTENCE LAYER]</span>
+  &bull; Drizzle ORM Engine & PostgreSQL 16 + pgvector
+  &bull; 64-D Cosine Similarity Vector Index (HNSW / IVFFlat)
+  &bull; Vanish Audit Log (Immutable Receipt Registry)
+  </div>
+
+  <h2>Technology Stack Specification</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Frontend & UI</div>
+      <div class="card-body">
+        &bull; Next.js 14.2.35 (App Router)<br>
+        &bull; React 18.3.1 (SSG & Dynamic)<br>
+        &bull; Framer Motion 11 (Constellations)<br>
+        &bull; Tailwind CSS 3.4 (Obsidian Glass)<br>
+        &bull; Zustand 5.0 (Global State)
+      </div>
+    </div>
+    <div class="card highlight">
+      <div class="card-title">DSP & Soundscape</div>
+      <div class="card-body">
+        &bull; In-Browser Web Audio API<br>
+        &bull; YIN Pitch Tracking Algorithm<br>
+        &bull; Spectral Centroid Timbre Extraction<br>
+        &bull; Zero-Asset Mathematical Synthesizer<br>
+        &bull; Dual-Chamber Cardiac Synthesis
+      </div>
+    </div>
+    <div class="card purple">
+      <div class="card-title">Security & Data</div>
+      <div class="card-body">
+        &bull; SHA-256 Merkle Tree Receipts<br>
+        &bull; Regex International PII Filter<br>
+        &bull; PostgreSQL + pgvector Extension<br>
+        &bull; Drizzle ORM Schema Migrations<br>
+        &bull; Double-Blind Sealed State Engine
+      </div>
+    </div>
+  </div>
+
+  <h2>Internationalization Architecture</h2>
+  <p>
+    The platform natively prerenders 10 global locales (<code>en, ur, ar, fr, tr, id, ms, de, bn, es</code>). Middleware automatically inspects <code>Accept-Language</code> headers while maintaining bidirectional RTL support (dynamically setting <code>dir="rtl"</code> and adjusting letter spacing for Urdu and Arabic scripts).
+  </p>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 3</div>
+  </div>
+</div>

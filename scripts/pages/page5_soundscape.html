@@ -1,0 +1,79 @@
+<!-- PAGE 5: PROCEDURAL SOUNDSCAPE ENGINE -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 04: SOUNDSCAPE ENGINE</div>
+  </div>
+
+  <h1><span class="sec-num">04.</span> Zero-Asset Procedural Web Audio Soundscape</h1>
+  <p class="lead">
+    High-fidelity mobile experiences are frequently compromised by downloading large MP3/WAV assets that introduce network latency, memory bloat, and hydration glitches. <code>lib/audio/soundscape.js</code> introduces a purely mathematical procedural synthesis engine with zero asset downloads.
+  </p>
+
+  <h2>Procedural Synthesis Specifications</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Sound Event</th>
+        <th>Oscillator Configuration</th>
+        <th>Envelope & Modulation</th>
+        <th>Psychological Intent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cardiac Pulse (Lub-Dub)</strong></td>
+        <td>Sine Wave<br>75 Hz &rarr; 36 Hz exponential glide</td>
+        <td>Twin gain impulses (80ms spacing)<br>Peak gain 0.22, decay 320ms</td>
+        <td>Simulates resting human heart rate; evokes physical intimacy and presence</td>
+      </tr>
+      <tr>
+        <td><strong>Celestial Resonance Chime</strong></td>
+        <td>Dual Sine<br>528 Hz (Solfeggio) + 1056 Hz (Harmonic)</td>
+        <td>Instant attack, exponential release<br>Decay tau = 1.2s with soft lowpass</td>
+        <td>Signals harmonic bond completion and reciprocal unlocks with sacred calm</td>
+      </tr>
+      <tr>
+        <td><strong>Crystalline Fusion Spark</strong></td>
+        <td>Triangle Waves<br>Chord: 880Hz, 1320Hz, 1760Hz</td>
+        <td>Staggered micro-arpeggio (25ms delay)<br>Decay 450ms with 4kHz bandpass</td>
+        <td>Tactile celebratory confirmation during chemical element fusing</td>
+      </tr>
+      <tr>
+        <td><strong>Vanish Shred Sound</strong></td>
+        <td>White Noise Buffer + FM Sine<br>Pitch dive 300Hz &rarr; 40Hz</td>
+        <td>Exponential bandpass filter sweep<br>Decay 380ms with hard gate zeroize</td>
+        <td>Acoustic confirmation of irreversible cryptographic data shredding</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Cardiac Pulse Synthesis Architecture</h2>
+  <div class="formula-box">
+<span class="keyword">function</span> <span class="accent">playCardiacPulse</span>(audioCtx, bpm = 68) {
+  <span class="comment">// Primary ventricle (Lub)</span>
+  <span class="keyword">const</span> osc1 = audioCtx.createOscillator();
+  osc1.frequency.setValueAtTime(75, now);
+  osc1.frequency.exponentialRampToValueAtTime(36, now + 0.12);
+  gain1.gain.setValueAtTime(0.24, now);
+  gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+  <span class="comment">// Secondary ventricle (Dub) - Delayed 85ms</span>
+  <span class="keyword">const</span> osc2 = audioCtx.createOscillator();
+  osc2.frequency.setValueAtTime(62, now + 0.085);
+  osc2.frequency.exponentialRampToValueAtTime(32, now + 0.22);
+  gain2.gain.setValueAtTime(0.18, now + 0.085);
+  gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+}
+  </div>
+
+  <h2>Hydration-Safe Autoplay Compliance</h2>
+  <p>
+    Browsers enforce strict audio autoplay security policies prohibiting audio playback before explicit user interaction. The Soundscape engine utilizes a lazy singleton <code>SoundscapeEngine</code> that monitors first gestures (drag, tap, keypress) to transition the <code>AudioContext</code> from <code>suspended</code> to <code>running</code> smoothly without runtime warnings.
+  </p>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 5</div>
+  </div>
+</div>

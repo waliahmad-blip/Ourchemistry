@@ -1,0 +1,90 @@
+<!-- PAGE 8: CRYPTOGRAPHIC MERKLE VANISH ENGINE -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 07: CRYPTOGRAPHIC VANISH</div>
+  </div>
+
+  <h1><span class="sec-num">07.</span> Sovereign Cryptographic Vanish Engine</h1>
+  <p class="lead">
+    Traditional platforms treat user data as permanent proprietary corporate assets. <code>lib/security/cryptoVanish.js</code> implements a one-tap 60-second cryptographic erasure protocol that zeroizes ephemeral logs and produces a cryptographically verifiable Merkle proof receipt.
+  </p>
+
+  <h2>Merkle Root Erasure Calculation</h2>
+  <p>
+    When a connection concludes or a user triggers Vanish, every entity targeted for shredding (chat entries, voice capsule references, interaction records) is hashed with SHA-256 and structured into a binary Merkle tree:
+  </p>
+
+  <div class="formula-box">
+<span class="comment">// Level 0 Leaf Hashes</span>
+H_1 = SHA-256(item_1),  H_2 = SHA-256(item_2),  H_3 = SHA-256(item_3), ...
+
+<span class="comment">// Level 1 Intermediate Nodes</span>
+H_{1,2} = SHA-256(H_1 + H_2),   H_{3,4} = SHA-256(H_3 + H_4)
+
+<span class="comment">// Top Merkle Root</span>
+Root = SHA-256(H_{1,2} + H_{3,4})
+Verifiable Flight Receipt ID: <span class="accent">"RCPT-VANISH-[TIMESTAMP]-[HEX]"</span>
+  </div>
+
+  <h2>Receipt Lifecycle & Audit Architecture</h2>
+  <div class="grid-2">
+    <div class="card highlight">
+      <div class="card-title">60-Second Zeroization Pipeline</div>
+      <div class="card-body">
+        &bull; Step 1: Memory references scrubbed & overwritten with zeros.<br>
+        &bull; Step 2: Database rows permanently deleted (hard delete).<br>
+        &bull; Step 3: Client cache purged via Cache-Control / BroadcastChannel.<br>
+        &bull; Step 4: Web Audio shred soundscape confirms zeroization.
+      </div>
+    </div>
+    <div class="card emerald">
+      <div class="card-title">Verifiable Proof Without PII</div>
+      <div class="card-body">
+        The signed flight receipt records:
+        <br>&bull; Anonymized SHA-256 Hash of User ID
+        <br>&bull; Cryptographic Merkle Root over deleted payloads
+        <br>&bull; Total count of zeroized records
+        <br>&bull; UTC timestamp of permanent erasure
+      </div>
+    </div>
+  </div>
+
+  <h2>Audit Log Schema Sample</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Receipt Attribute</th>
+        <th>Cryptographic Type</th>
+        <th>Audit Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>receiptId</code></td>
+        <td><code>VARCHAR(64) UNIQUE</code></td>
+        <td>Public identifier provided to user as proof of destruction</td>
+      </tr>
+      <tr>
+        <td><code>userIdHash</code></td>
+        <td><code>CHAR(64) SHA-256</code></td>
+        <td>One-way hash proving requester origin without exposing identity</td>
+      </tr>
+      <tr>
+        <td><code>merkleRoot</code></td>
+        <td><code>CHAR(64) SHA-256</code></td>
+        <td>Mathematical proof encompassing every shredded payload</td>
+      </tr>
+      <tr>
+        <td><code>status</code></td>
+        <td><code>ENUM('ZEROIZED_VERIFIED')</code></td>
+        <td>Immutable confirmation of complete cryptographic destruction</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 8</div>
+  </div>
+</div>

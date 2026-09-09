@@ -1,0 +1,93 @@
+<!-- PAGE 7: 7-DAY BOND PROTOCOL STATE MACHINE -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 06: BOND PROTOCOL</div>
+  </div>
+
+  <h1><span class="sec-num">06.</span> 7-Day Bond Protocol State Machine</h1>
+  <p class="lead">
+    Connection is governed by a deterministic, sequential state machine (<code>lib/bond/bondStateMachine.js</code>). Neither party can rush ahead; every stage requires reciprocal completion. On Day 7, a double-blind resolution resolves the connection with zero exposure to unilateral rejection.
+  </p>
+
+  <h2>Daily Structured Curriculum</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Stage Name</th>
+        <th>Interaction Medium</th>
+        <th>Visual Privacy State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Day 1</strong></td>
+        <td>Acoustic Resonance</td>
+        <td>Voice Capsule 01 (60s spoken prompt: What brings you awe?)</td>
+        <td>Portrait Blurred (100%) &bull; Sigil Art Only</td>
+      </tr>
+      <tr>
+        <td><strong>Day 2</strong></td>
+        <td>Cadence & Tone</td>
+        <td>Voice Capsule 02 (90s spoken prompt: How you navigate grief)</td>
+        <td>Portrait Blurred (100%) &bull; Sigil Art Only</td>
+      </tr>
+      <tr>
+        <td><strong>Day 3</strong></td>
+        <td>Values Architecture</td>
+        <td>Core Belief Matrix (Tradition, Faith, Financial Philosophy)</td>
+        <td>Portrait Blurred (100%) &bull; Sigil Art Only</td>
+      </tr>
+      <tr>
+        <td><strong>Day 4</strong></td>
+        <td>Family & Rhythm</td>
+        <td>Life Alignment (Family dynamics, Sabbath/Weekend rhythms)</td>
+        <td>Portrait Blurred (100%) &bull; Sigil Art Only</td>
+      </tr>
+      <tr>
+        <td><strong>Day 5</strong></td>
+        <td>Resonance Texting</td>
+        <td>Synchronous ephemeral chat with cardiac pulse presence</td>
+        <td>Portrait Blurred (100%) &bull; Sigil Art Only</td>
+      </tr>
+      <tr>
+        <td><strong>Day 6</strong></td>
+        <td>Reciprocal Reveal</td>
+        <td>Portrait Unblur (Requires dual affirmative opt-in)</td>
+        <td>Unblurs ONLY if both opt-in simultaneously</td>
+      </tr>
+      <tr>
+        <td><strong>Day 7</strong></td>
+        <td>Sealed Decision</td>
+        <td>Double-Blind Simultaneous Resolution (EXTEND vs RELEASE)</td>
+        <td>Zero-Rejection Resolution Architecture</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Double-Blind Zero-Rejection Resolution Logic</h2>
+  <div class="formula-box">
+<span class="keyword">function</span> <span class="accent">resolveDoubleBlind</span>(decisionA, decisionB) {
+  <span class="keyword">if</span> (decisionA === <span class="accent">'PENDING'</span> || decisionB === <span class="accent">'PENDING'</span>) {
+    <span class="keyword">return</span> { outcome: <span class="accent">'PENDING_PARTNER'</span>, publicNotice: <span class="comment">'Awaiting partner choice...'</span> };
+  }
+  <span class="keyword">if</span> (decisionA === <span class="accent">'EXTEND'</span> && decisionB === <span class="accent">'EXTEND'</span>) {
+    <span class="keyword">return</span> { outcome: <span class="accent">'EXTENDED'</span>, publicNotice: <span class="comment">'Reciprocal affinity confirmed. Unlocked.'</span> };
+  }
+  <span class="comment">// If either party chooses RELEASE (or both do)</span>
+  <span class="keyword">return</span> {
+    outcome: <span class="accent">'RELEASED_GRACEFULLY'</span>,
+    publicNotice: <span class="comment">'Your 7-day bond journey has concluded with dignity. We honor your path.'</span>
+  };
+}
+  </div>
+  <p>
+    <strong>The Rejection Elimination Guarantee:</strong> If User A votes <code>EXTEND</code> and User B votes <code>RELEASE</code>, User A is never notified that User B chose release. Both users receive an identical, respectful message. Dignity is preserved at all times.
+  </p>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 7</div>
+  </div>
+</div>

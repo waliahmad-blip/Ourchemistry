@@ -1,0 +1,66 @@
+<!-- PAGE 4: AUDIO DSP & VOICE DNA ENGINE -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
+    <div>SECTION 03: AUDIO DSP ENGINE</div>
+  </div>
+
+  <h1><span class="sec-num">03.</span> In-Browser Audio DSP & Voice DNA</h1>
+  <p class="lead">
+    To safeguard user sovereignty, raw audio is never recorded, transmitted, or stored on remote servers. Feature extraction runs client-side in under 16ms per frame using the YIN Pitch Tracking algorithm and Spectral Centroid analysis implemented in <code>lib/dsp/pitchDetector.js</code>.
+  </p>
+
+  <h2>The Mathematical YIN Pitch Tracking Algorithm</h2>
+  <p>
+    Unlike naive autocorrelation, YIN minimizes error across octave shifts by employing cumulative mean normalization:
+  </p>
+
+  <div class="formula-box">
+<span class="comment">// 1. Squared Difference Function</span>
+d_t(&tau;) = &sum;_{j=1}^{W} (x_j - x_{j+&tau;})^2
+
+<span class="comment">// 2. Cumulative Mean Normalized Difference Function</span>
+d_t'(&tau;) = 
+  { 1,                                  if &tau; = 0
+  { d_t(&tau;) / [(1/&tau;) * &sum;_{j=1}^{&tau;} d_t(j)],  otherwise
+
+<span class="comment">// 3. Absolute Threshold & Sub-Bin Parabolic Interpolation</span>
+&tau;* = argmin_{&tau;} { d_t'(&tau;) &lt; 0.10 }
+Fundamental Pitch: F_0 = SampleRate / &tau;* (Accuracy &plusmn;1 Hz)
+  </div>
+
+  <h2>Spectral Centroid & Timbre Extraction</h2>
+  <p>
+    The Spectral Centroid reflects vocal brightness, resonance, and emotional warmth by calculating the center of gravity of the frequency spectrum obtained via Discrete Fourier Transform:
+  </p>
+  <div class="formula-box">
+Centroid = [ &sum;_{k=0}^{N-1} f(k) &bull; |X(k)| ] / [ &sum;_{k=0}^{N-1} |X(k)| ]
+Warmth Metric = clamp(1.0 - (Centroid - 800) / 2200, 0.0, 1.0)
+Resonance Score = clamp((Stability * 0.6) + (Warmth * 0.4), 0.0, 1.0)
+  </div>
+
+  <h2>Deterministic 64-Dimensional Vector Derivation</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Biometric Seed Generation</div>
+      <div class="card-body">
+        The extracted physical parameters (median pitch $F_0$, stability score, spectral centroid, energy bands) are hashed into a deterministic 32-bit integer seed via DJB2 / Murmur variant. This ensures <code>SigilArt.jsx</code> paints the exact same sacred geometric sigil on identical vocal input.
+      </div>
+    </div>
+    <div class="card highlight">
+      <div class="card-title">Vector Affinity Mapping</div>
+      <div class="card-body">
+        The normalized 64-D embedding is biased toward chemical elements:
+        <br>&bull; <strong>Aqua:</strong> Centroid &lt; 1200 Hz (Deep, calm resonance)
+        <br>&bull; <strong>Ignis:</strong> Centroid &gt; 1800 Hz (High energy & clarity)
+        <br>&bull; <strong>Terra:</strong> Stability &gt; 0.88 (Grounded, rhythmic cadence)
+        <br>&bull; <strong>Ventus:</strong> Stability &lt; 0.75 (Dynamic, expressive timbre)
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div>ourchemistry.ai &bull; Blueprint v2.0</div>
+    <div>Page 4</div>
+  </div>
+</div>
