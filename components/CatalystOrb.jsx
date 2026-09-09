@@ -27,27 +27,6 @@ export default function CatalystOrb({ dict }) {
   const scrollRef = useRef(null);
   const recognitionRef = useRef(null);
 
-  // Auto-scroll on new messages
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [msgs, typing]);
-  // Listen for global open-astraea triggers
-  const askRef = useRef(null);
-  askRef.current = ask;
-  useEffect(() => {
-    const handleOpen = (e) => {
-      setOpen(true);
-      if (e?.detail && askRef.current) {
-        askRef.current(e.detail);
-      }
-    };
-    window.addEventListener('open-astraea', handleOpen);
-    return () => window.removeEventListener('open-astraea', handleOpen);
-  }, []);
-
-
   // Voice speech synthesis read-aloud
   const speakText = useCallback(
     (text) => {
@@ -65,6 +44,77 @@ export default function CatalystOrb({ dict }) {
     },
     [speechEnabled]
   );
+
+  const ask = useCallback(
+    async (text) => {
+      const clean = (text || '').trim();
+      if (!clean) return;
+
+      const userMsg = { from: 'user', text: clean };
+      setMsgs((m) => [...m, userMsg]);
+      setInput('');
+      setTyping(true);
+
+      try {
+        const res = await fetch('/api/catalyst', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: clean,
+            locale,
+            history: msgs.slice(-4),
+          }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const replyText =
+            data.reply ||
+            'We engineered ourchemistry for celestial emotional resonance. Ask about our Voice DNA or the 7-Day Bond Protocol.';
+          setTyping(false);
+          setMsgs((m) => [...m, { from: 'bot', text: replyText, locked: true }]);
+          speakText(replyText);
+          return;
+        }
+      } catch {
+        // Network failure fallback
+      }
+
+      const fallbackReply =
+        'Astraea is resonating with your inquiry. We engineered ourchemistry for depth, voice truth, and sacred covenants. What element guides you?';
+      setTimeout(() => {
+        setTyping(false);
+        setMsgs((m) => [...m, { from: 'bot', text: fallbackReply, locked: true }]);
+        speakText(fallbackReply);
+      }, 500);
+    },
+    [locale, msgs, speakText]
+  );
+
+  // Auto-scroll on new messages
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [msgs, typing]);
+
+  // Keep ref up to date for event listeners
+  const askRef = useRef(ask);
+  useEffect(() => {
+    askRef.current = ask;
+  }, [ask]);
+
+  // Listen for global open-astraea triggers
+  useEffect(() => {
+    const handleOpen = (e) => {
+      setOpen(true);
+      if (e?.detail && askRef.current) {
+        askRef.current(e.detail);
+      }
+    };
+    window.addEventListener('open-astraea', handleOpen);
+    return () => window.removeEventListener('open-astraea', handleOpen);
+  }, []);
 
   // Speech Recognition (Voice Dictation Input)
   const toggleListening = () => {
@@ -115,49 +165,6 @@ export default function CatalystOrb({ dict }) {
         text: 'Astraea session cleared. The celestial slate is renewed. Ask me anything about voice, bond trials, or launch waves.',
       },
     ]);
-  };
-
-  const ask = async (text) => {
-    const clean = (text || '').trim();
-    if (!clean) return;
-
-    const userMsg = { from: 'user', text: clean };
-    setMsgs((m) => [...m, userMsg]);
-    setInput('');
-    setTyping(true);
-
-    try {
-      const res = await fetch('/api/catalyst', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: clean,
-          locale,
-          history: msgs.slice(-4),
-        }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const replyText =
-          data.reply ||
-          'We engineered ourchemistry for celestial emotional resonance. Ask about our Voice DNA or the 7-Day Bond Protocol.';
-        setTyping(false);
-        setMsgs((m) => [...m, { from: 'bot', text: replyText, locked: true }]);
-        speakText(replyText);
-        return;
-      }
-    } catch {
-      // Network failure fallback
-    }
-
-    const fallbackReply =
-      'Astraea is resonating with your inquiry. We engineered ourchemistry for depth, voice truth, and sacred covenants. What element guides you?';
-    setTimeout(() => {
-      setTyping(false);
-      setMsgs((m) => [...m, { from: 'bot', text: fallbackReply, locked: true }]);
-      speakText(fallbackReply);
-    }, 500);
   };
 
   return (
