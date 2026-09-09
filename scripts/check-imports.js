@@ -3,8 +3,12 @@
  * - every relative import must resolve to a real file
  * - every bare import must exist in node_modules (or be a Next built-in)
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const ROOT = path.join(__dirname, '..');
 const DIRS = ['app', 'components', 'lib'];

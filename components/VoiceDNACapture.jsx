@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import SigilArt from './SigilArt';
 import { useAppStore } from '../lib/store';
+import { RotateCcw, Sparkles, Lock } from 'lucide-react';
 import {
   yinPitchDetector,
   analyzePitchStability,
@@ -37,6 +38,21 @@ export default function VoiceDNACapture({ dict }) {
 
   useEffect(() => () => cleanup(), []);
 
+  const syncVoicePrint = (dna) => {
+    fetch('/api/voice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        vector64: dna.vector64,
+        acousticHash: dna.acousticHash,
+        medianPitch: dna.medianPitch,
+        stability: dna.stability,
+        warmth: dna.warmth,
+        resonance: dna.resonance,
+      }),
+    }).catch(() => {});
+  };
+
   const finish = () => {
     cleanup();
     setRecording(false);
@@ -52,6 +68,7 @@ export default function VoiceDNACapture({ dict }) {
     setSeed(dnaResult.deterministicSeed);
     setDnaMetrics(dnaResult);
     setVoiceDna(dnaResult);
+    syncVoicePrint(dnaResult);
     if (navigator.vibrate) navigator.vibrate([60, 40, 80]);
   };
 
@@ -66,6 +83,7 @@ export default function VoiceDNACapture({ dict }) {
       setSeed(fallback.deterministicSeed);
       setDnaMetrics(fallback);
       setVoiceDna(fallback);
+      syncVoicePrint(fallback);
       return;
     }
     try {
@@ -126,6 +144,7 @@ export default function VoiceDNACapture({ dict }) {
       setSeed(fallback.deterministicSeed);
       setDnaMetrics(fallback);
       setVoiceDna(fallback);
+      syncVoicePrint(fallback);
     }
   };
 
@@ -175,21 +194,65 @@ export default function VoiceDNACapture({ dict }) {
       </button>
 
       {captured && (
-        <div className="mt-4 flex flex-col items-center gap-1.5" style={{ animation: 'pop .4s ease' }}>
-          <p className="text-[#5eead4] font-semibold">✓ {dict.voice.capture}</p>
+        <div className="mt-5 flex flex-col items-center gap-3 w-full max-w-md" style={{ animation: 'pop .4s ease' }}>
+          <div className="flex items-center gap-1.5 text-[#5eead4] font-semibold text-sm">
+            <Lock size={14} />
+            <span>✓ {dict.voice.capture}</span>
+          </div>
+
           {dnaMetrics && (
-            <div className="flex items-center gap-2 font-mono text-[11px] text-white/60">
-              <span className="text-[#ffd7a1]">Resonance {dnaMetrics.resonance}%</span>
-              <span>•</span>
-              <span className="text-teal-300">Warmth {dnaMetrics.warmth}%</span>
-              <span>•</span>
-              <span className="text-pink-300/80">{dnaMetrics.acousticHash.slice(0, 16)}…</span>
+            <div className="w-full glass rounded-xl p-3 border border-white/10 grid grid-cols-3 gap-2 font-mono text-center">
+              <div className="p-2 rounded-lg bg-white/5">
+                <span className="block text-[10px] text-white/50">RESONANCE</span>
+                <span className="text-sm font-bold text-[#ffd7a1]">{dnaMetrics.resonance}%</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white/5">
+                <span className="block text-[10px] text-white/50">WARMTH</span>
+                <span className="text-sm font-bold text-teal-300">{dnaMetrics.warmth}%</span>
+              </div>
+              <div className="p-2 rounded-lg bg-white/5">
+                <span className="block text-[10px] text-white/50">STABILITY</span>
+                <span className="text-sm font-bold text-pink-300">
+                  {Math.round((dnaMetrics.stability || 0.85) * 100)}%
+                </span>
+              </div>
+              <div className="col-span-3 text-[10px] text-white/40 pt-1 border-t border-white/5 flex items-center justify-center gap-1">
+                <span>HASH:</span>
+                <span className="text-cyan-300/80">{dnaMetrics.acousticHash.slice(0, 24)}…</span>
+              </div>
             </div>
           )}
+
+          <div className="flex gap-2 w-full justify-center">
+            <button
+              onClick={() => {
+                setCaptured(false);
+                setDnaMetrics(null);
+                setSeed(0);
+              }}
+              className="glass px-4 py-2 rounded-full text-xs text-white/80 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5"
+            >
+              <RotateCcw size={13} />
+              <span>Re-calibrate</span>
+            </button>
+            <button
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent('open-astraea', {
+                    detail: 'How does sovereign Voice DNA protect my privacy?',
+                  })
+                )
+              }
+              className="glass border border-[#5eead4]/40 px-4 py-2 rounded-full text-xs text-[#5eead4] hover:bg-[#5eead4]/15 transition flex items-center gap-1.5"
+            >
+              <Sparkles size={13} />
+              <span>Ask Astraea</span>
+            </button>
+          </div>
         </div>
       )}
 
-      <div className="mt-10 glass rounded-2xl p-4 max-w-md">
+      <div className="mt-8 glass rounded-2xl p-4 max-w-md">
         <h4 className="text-[#ffd7a1] text-sm font-semibold">🔐 {dict.voice.onDevice}</h4>
         <p className="text-white/50 text-xs mt-1">{dict.voice.onDeviceSub}</p>
       </div>

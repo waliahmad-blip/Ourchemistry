@@ -1,11 +1,13 @@
 'use client';
 import { useRef, useState } from 'react';
 import { playResonanceChime, playHeartPulse } from '../lib/audio/soundscape';
+import BondProtocolModal from './BondProtocolModal';
 
 export default function BondMeter({ dict }) {
   const [p, setP] = useState(0);
   const [bonded, setBonded] = useState(false);
   const [score, setScore] = useState(0);
+  const [protocolOpen, setProtocolOpen] = useState(false);
   const stageRef = useRef(null);
 
   const status =
@@ -21,16 +23,20 @@ export default function BondMeter({ dict }) {
 
   const onChange = (e) => {
     const v = Number(e.target.value);
-    setP(v);
-    if (v >= 100 && !bonded) {
+    applyPreset(v);
+  };
+
+  const applyPreset = (val) => {
+    setP(val);
+    if (val >= 100 && !bonded) {
       setBonded(true);
       setScore(92 + Math.floor(Math.random() * 8));
       playResonanceChime(660);
       if (navigator.vibrate) navigator.vibrate([80, 50, 80, 50, 120]);
-    } else if (v > 50 && v % 25 === 0) {
+    } else if (val > 50 && val % 25 === 0) {
       playHeartPulse(0.6);
     }
-    if (v < 100) setBonded(false);
+    if (val < 100) setBonded(false);
   };
 
   const reset = () => {
@@ -90,6 +96,28 @@ export default function BondMeter({ dict }) {
           <span>{dict.bond.resonance}</span>
         </div>
 
+        {/* Quick Alchemical Jump Presets */}
+        <div className="mt-4 flex gap-1.5 justify-center flex-wrap">
+          {[
+            { label: '25% Spark', val: 25 },
+            { label: '50% Orbit', val: 50 },
+            { label: '75% Fusion', val: 75 },
+            { label: '100% Covenant ⚡', val: 100 },
+          ].map((preset) => (
+            <button
+              key={preset.val}
+              onClick={() => applyPreset(preset.val)}
+              className={`text-[11px] font-mono px-3 py-1 rounded-full transition ${
+                p === preset.val
+                  ? 'bg-[#5eead4] text-[#04060f] font-bold shadow-[0_0_12px_rgba(94,234,212,0.4)]'
+                  : 'glass text-white/70 hover:text-white hover:border-[#5eead4]/40'
+              }`}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+
         <div className="mt-6 flex items-center justify-between">
           <p className="font-display text-3xl grad-text">{p}%</p>
           <p className="text-[#ffd7a1] font-semibold text-sm">{status}</p>
@@ -99,15 +127,46 @@ export default function BondMeter({ dict }) {
           <div className="mt-6 glass rounded-2xl p-6" style={{ animation: 'pop .6s' }}>
             <p className="font-display text-2xl grad-text font-bold">{score}% Bond Strength</p>
             <p className="text-white/50 text-sm mt-2">Catalytic. This is what ourchemistry feels like.</p>
-            <button
-              onClick={reset}
-              className="mt-4 glass px-5 py-2 rounded-full text-sm hover:text-[#5eead4] transition"
-            >
-              Run it again ↺
-            </button>
+            <div className="mt-4 flex gap-2 justify-center flex-wrap">
+              <button
+                onClick={() => setProtocolOpen(true)}
+                className="btn-shine bg-[#5eead4] text-[#04060f] font-semibold px-5 py-2 rounded-full text-xs hover:scale-105 transition"
+              >
+                Enter 7-Day Bond Protocol →
+              </button>
+              <button
+                onClick={() =>
+                  window.dispatchEvent(
+                    new CustomEvent('open-astraea', {
+                      detail: 'Explain the 7-day double-blind bond protocol choices.',
+                    })
+                  )
+                }
+                className="glass border border-[#a78bfa]/40 text-[#a78bfa] px-4 py-2 rounded-full text-xs hover:bg-[#a78bfa]/15 transition"
+              >
+                Ask Astraea ✨
+              </button>
+              <button
+                onClick={reset}
+                className="glass px-4 py-2 rounded-full text-xs hover:text-[#5eead4] transition"
+              >
+                Run it again ↺
+              </button>
+            </div>
           </div>
         )}
+
+        {!bonded && (
+          <button
+            onClick={() => setProtocolOpen(true)}
+            className="mt-6 text-xs font-mono text-white/40 hover:text-teal-300 transition underline underline-offset-4"
+          >
+            Preview 7-Day Double-Blind Protocol ⚡
+          </button>
+        )}
       </div>
+
+      <BondProtocolModal open={protocolOpen} onClose={() => setProtocolOpen(false)} />
     </section>
   );
 }

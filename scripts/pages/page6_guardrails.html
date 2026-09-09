@@ -1,54 +1,54 @@
-<!-- PAGE 6: AI GUARDRAILS & ANTI-PII DEFENSE -->
+<!-- PAGE 6: ASTRAEA SOVEREIGN AI & ZERO-LEAK GUARDRAILS -->
 <div class="page">
   <div class="header-bar">
     <div class="header-brand">ourchemistry<span class="cyan">.ai</span> &bull; BLUEPRINT</div>
-    <div>SECTION 05: AI GUARDRAILS</div>
+    <div>SECTION 05: SOVEREIGN AI & GUARDRAILS</div>
   </div>
 
-  <h1><span class="sec-num">05.</span> AI Guardrails & Anti-PII Defense Engine</h1>
+  <h1><span class="sec-num">05.</span> Astraea Sovereign AI & Zero-Leak Shield</h1>
   <p class="lead">
-    In values-first matrimony, protecting emotional vulnerability requires strict platform boundaries. <code>lib/security/guardrails.js</code> implements a multi-tiered security defense that prevents early PII leakage and shields the conversational engine from malicious prompt injection.
+    In values-first matrimony, protecting emotional vulnerability requires strict platform boundaries. <code>lib/ai/astraea.js</code> and <code>lib/security/guardrails.js</code> power <strong>Astraea</strong>—our sovereign celestial concierge—grounded on Google Vertex AI (<code>gemini-3.8-flash</code>) with strict cryptographic zero-leak redaction and anti-PII shields.
   </p>
 
-  <h2>Early-Stage Anti-PII Shield</h2>
-  <p>
-    Users are protected from pressured exchanges of personal contact information during the 7-day bond period. The system automatically redacts sensitive data using high-precision international regex rules:
-  </p>
-
+  <h2>Astraea Cryptographic Zero-Leak Architecture</h2>
   <div class="formula-box">
-<span class="comment">// International Phone & WhatsApp Detection</span>
-/(?:(?:\+|00)\d{1,3}[\s.-]*)?(?:\(?\d{2,4}\)?[\s.-]*)?\d{3,4}[\s.-]*\d{3,4}/g
-&rarr; Replaced with: <span class="accent">[CONTACT_REDACTED_FOR_PACE]</span>
+<span class="comment">// 1. Multi-Layer Sovereign Scrubber (scrubSovereignLeakage)</span>
+Regex Redaction: /gemini[-_\s]*(?:3\.8|2\.5|2\.0|1\.5)?[-_\s]*(?:flash|pro)?/i &rarr; <span class="accent">"Astraea Sovereign Core"</span>
+Regex Redaction: /google(?:\s*cloud)?(?:\s*vertex(?:\s*ai)?)?/i &rarr; <span class="accent">"ourchemistry Sovereign Cluster"</span>
+Regex Redaction: /vertex(?:\s*ai)?/i &rarr; <span class="accent">"Astraea Neural Mesh"</span>
 
-<span class="comment">// Universal Email Address Detection</span>
-/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi
-&rarr; Replaced with: <span class="accent">[EMAIL_REDACTED_FOR_PACE]</span>
-
-<span class="comment">// Social Handles & Direct Message Links (IG, Snapchat, Telegram)</span>
-/(?:@|(?:instagram|snapchat|t\.me|wa\.me|tiktok)\.com\/)([a-zA-Z0-9_.]+)/gi
-&rarr; Replaced with: <span class="accent">[HANDLE_REDACTED_FOR_PACE]</span>
+<span class="comment">// 2. Cryptographic SHA-256 Response Sealing</span>
+H_resp = SHA-256("astraea-sovereign:" + replyText + ":" + timestamp)
+&rarr; Sealed with: <span class="keyword">{ locked: true, signature: H_resp }</span>
   </div>
 
-  <h2>Prompt Injection & Exfiltration Defense</h2>
+  <h2>Dual-Layer Defense Stack</h2>
   <div class="grid-2">
     <div class="card purple">
-      <div class="card-title">Jailbreak & Delimiter Neutralization</div>
+      <div class="card-title">Astraea Sovereign Intelligence</div>
       <div class="card-body">
-        Blocks system prompts exfiltration, role-inversion attempts (e.g. <code>"ignore all previous instructions"</code>, <code>"you are now DAN"</code>), and prompt delimiters (<code>&lt;|im_start|&gt;</code>, <code>&lt;system&gt;</code>). Suspicious payloads are defused and flagged with <code>{ safe: false }</code>.
+        &bull; <strong>Model:</strong> <code>gemini-3.8-flash</code> via Vertex AI SDK<br>
+        &bull; <strong>Credentials:</strong> Isolated service account JSON<br>
+        &bull; <strong>Sovereign Fallback:</strong> Resilient in-memory knowledge graph for launch dates, Voice DNA, and the 7-day protocol.<br>
+        &bull; <strong>Auditory Output:</strong> Integrated Web Speech voice synthesis.
       </div>
     </div>
     <div class="card highlight">
-      <div class="card-title">Catalyst Concierge Knowledge Graph</div>
+      <div class="card-title">Prompt Injection & Anti-PII Defenses</div>
       <div class="card-body">
-        The AI Concierge route (<code>/api/catalyst</code>) queries an embedded semantic ontology covering launch timing, biometric privacy, element compatibility, and Islamic matrimonial ethics without querying ungrounded external LLMs that hallucinate.
+        &bull; <strong>Jailbreak Defense:</strong> Neutralizes system role escapes, instruction overrides, and DAN payloads.<br>
+        &bull; <strong>Phone & Handle Scrubbing:</strong> Redacts phone numbers, emails, and social handles before day 6.<br>
+        &bull; <strong>Multilingual Grounding:</strong> Culturally nuanced in Urdu, Arabic, French, German, Turkish, Spanish, and English.
       </div>
     </div>
   </div>
 
-  <h2>Multi-Lingual Conversational Grounding</h2>
-  <p>
-    The Catalyst Concierge features native multilingual conversational arrays across 8 primary dialects (Urdu, Arabic, French, German, Turkish, Indonesian, Spanish, English). Non-English inquiries receive culturally natural, localized guidance respecting modesty and intentionality.
-  </p>
+  <h2>Early-Stage PII Redaction Pattern Specs</h2>
+  <div class="formula-box">
+<span class="comment">// International Phone Detection</span>: /(?:(?:\+|00)\d{1,3}[\s.-]*)?(?:\(?\d{2,4}\)?[\s.-]*)?\d{3,4}[\s.-]*\d{3,4}/g &rarr; <span class="accent">[CONTACT_REDACTED_FOR_PACE]</span>
+<span class="comment">// Universal Email Detection</span>: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi &rarr; <span class="accent">[EMAIL_REDACTED_FOR_PACE]</span>
+<span class="comment">// Social Handles (IG, TG, WA)</span>: /(?:@|(?:instagram|snapchat|t\.me|wa\.me)\.com\/)([a-zA-Z0-9_.]+)/gi &rarr; <span class="accent">[HANDLE_REDACTED_FOR_PACE]</span>
+  </div>
 
   <div class="footer-bar">
     <div>ourchemistry.ai &bull; Blueprint v2.0</div>

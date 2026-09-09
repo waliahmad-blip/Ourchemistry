@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { Share2, Copy, Check, Sparkles } from 'lucide-react';
 import { useAppStore } from '../lib/store';
 
 export default function WaitlistForm({ dict }) {
@@ -19,7 +20,15 @@ export default function WaitlistForm({ dict }) {
       const ref = params.get('ref');
       if (ref) setIncomingRef(ref);
     }
-  }, []);
+    fetch('/api/waitlist')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && typeof data.count === 'number') {
+          setWaitlistCount(data.count);
+        }
+      })
+      .catch(() => {});
+  }, [setWaitlistCount]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -96,14 +105,70 @@ export default function WaitlistForm({ dict }) {
             </span>
           </p>
           <div className="border border-dashed border-white/15 rounded-2xl p-4 text-left text-sm">
-            <p className="text-white/60 mb-2">🧬 Catalyze 3 friends → jump 500 places.</p>
-            <p className="font-mono text-[#ffd7a1] mb-3">Your code: {refCode}</p>
-            <button
-              onClick={copyReferral}
-              className="glass px-4 py-2 rounded-full text-xs hover:text-[#5eead4] transition"
-            >
-              {copied ? 'Link copied ✓' : 'Copy my link'}
-            </button>
+            <p className="text-white/60 mb-2">🧬 Catalyze 3 friends → jump 500 places in the constellation.</p>
+            <p className="font-mono text-[#ffd7a1] mb-3">Your referral code: <span className="font-bold text-white">{refCode}</span></p>
+            
+            <div className="flex flex-wrap gap-2 pt-1">
+              <button
+                onClick={copyReferral}
+                className="glass px-3.5 py-1.5 rounded-full text-xs text-white/90 hover:text-[#5eead4] hover:bg-white/10 transition flex items-center gap-1.5"
+              >
+                {copied ? <Check size={12} className="text-[#5eead4]" /> : <Copy size={12} />}
+                <span>{copied ? 'Copied ✓' : 'Copy link'}</span>
+              </button>
+
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                  `Join me on OurChemistry — sovereign voice-first matching: ${typeof window !== 'undefined' ? window.location.origin : ''}/en?ref=${refCode}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass px-3 py-1.5 rounded-full text-xs text-emerald-300 hover:bg-emerald-500/10 transition flex items-center gap-1"
+              >
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href={`https://t.me/share/url?url=${encodeURIComponent(
+                  `${typeof window !== 'undefined' ? window.location.origin : ''}/en?ref=${refCode}`
+                )}&text=${encodeURIComponent('Ignite your chemistry on OurChemistry:')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass px-3 py-1.5 rounded-full text-xs text-sky-300 hover:bg-sky-500/10 transition flex items-center gap-1"
+              >
+                <span>Telegram</span>
+              </a>
+
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                  'Ignited my spark on OurChemistry — sovereign voice-first matching. Join the constellation: '
+                )}&url=${encodeURIComponent(
+                  `${typeof window !== 'undefined' ? window.location.origin : ''}/en?ref=${refCode}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass px-3 py-1.5 rounded-full text-xs text-white/80 hover:text-white hover:bg-white/10 transition flex items-center gap-1"
+              >
+                <span>𝕏 Share</span>
+              </a>
+            </div>
+
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+              <span className="text-[11px] text-white/50">Wondering about launch waves?</span>
+              <button
+                onClick={() =>
+                  window.dispatchEvent(
+                    new CustomEvent('open-astraea', {
+                      detail: 'When will my wave ignite on the waitlist?',
+                    })
+                  )
+                }
+                className="text-[11px] text-[#5eead4] hover:underline flex items-center gap-1"
+              >
+                <Sparkles size={11} />
+                <span>Ask Astraea</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

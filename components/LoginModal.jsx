@@ -19,6 +19,11 @@ function GoogleG({ size = 18 }) {
 export default function LoginModal({ open, onClose, dict }) {
   const L = dict?.login ?? {};
   const [mode, setMode] = useState('signin');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [authError, setAuthError] = useState('');
+  const [authSuccess, setAuthSuccess] = useState('');
 
   useEffect(() => {
     const esc = (e) => e.key === 'Escape' && onClose?.();
@@ -27,8 +32,38 @@ export default function LoginModal({ open, onClose, dict }) {
   }, [open, onClose]);
 
   const handleGoogle = () => {
-    // TODO(launch): replace with real OAuth (Auth.js signIn('google'))
     window.location.href = '/api/auth/google/start';
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password || loading) return;
+    setLoading(true);
+    setAuthError('');
+    setAuthSuccess('');
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: mode, email, password }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        setAuthError(data.error || 'Authentication failed. Please verify credentials.');
+      } else {
+        setAuthSuccess(mode === 'signin' ? 'Session authenticated.' : 'Account created and secured.');
+        setTimeout(() => {
+          onClose?.();
+          setAuthSuccess('');
+        }, 800);
+      }
+    } catch {
+      setAuthError('Network error connecting to auth server.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,24 +111,51 @@ export default function LoginModal({ open, onClose, dict }) {
               <span className="h-px flex-1 bg-white/10" />
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); /* TODO(launch): wire to /api/auth */ }}>
+            {authError && (
+              <p className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-center text-[12px] text-red-300">
+                {authError}
+              </p>
+            )}
+
+            {authSuccess && (
+              <p className="mb-4 rounded-xl border border-teal-500/30 bg-teal-500/10 px-3 py-2 text-center text-[12px] text-teal-300">
+                {authSuccess}
+              </p>
+            )}
+
+            <form onSubmit={handleSubmit}>
               <label className="mb-3 block">
                 <span className="mb-1 flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-white/40">
                   <Mail size={11} /> {L.email}
                 </span>
-                <input type="email" required autoComplete="email"
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-teal-300/50" />
+                <input
+                  type="email"
+                  required
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-teal-300/50"
+                />
               </label>
               <label className="mb-5 block">
                 <span className="mb-1 flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-white/40">
                   <Lock size={11} /> {L.password}
                 </span>
-                <input type="password" required autoComplete="current-password"
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-teal-300/50" />
+                <input
+                  type="password"
+                  required
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-white/25 focus:border-teal-300/50"
+                />
               </label>
-              <button type="submit"
-                className="w-full rounded-xl bg-gradient-to-r from-teal-300 to-cyan-300 py-3 text-[14px] font-semibold text-slate-900 transition hover:brightness-110 active:scale-[0.99]">
-                {mode === 'signin' ? L.submit : L.signup}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-xl bg-gradient-to-r from-teal-300 to-cyan-300 py-3 text-[14px] font-semibold text-slate-900 transition hover:brightness-110 active:scale-[0.99] disabled:opacity-50"
+              >
+                {loading ? '…' : mode === 'signin' ? L.submit : L.signup}
               </button>
             </form>
 

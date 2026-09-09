@@ -4,8 +4,8 @@
  *   1. Properly stringified: JSON.parse(raw) returns a string -> use it.
  *   2. Naive wrapping: raw starts and ends with a literal quote -> strip them.
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const EXTS = ['.js', '.jsx', '.json', '.mjs', '.css', '.ts'];
 const SKIP = new Set(['node_modules', '.git', '.next']);

@@ -3,8 +3,8 @@
  * the entire file content enclosed in one extra pair of double quotes.
  * Prints WRAPPED: <path> for each hit.
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const EXTS = ['.js', '.jsx', '.json', '.mjs', '.css', '.ts'];
 const SKIP = new Set(['node_modules', '.git', '.next']);

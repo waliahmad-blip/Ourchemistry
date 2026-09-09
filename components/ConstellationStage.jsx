@@ -16,7 +16,8 @@ import TwoHeartsSync from './TwoHeartsSync';
 import Comet from './Comet';
 import FusionLab from './FusionLab';
 import PulseStrip from './PulseStrip';
-import { EyeOff, AudioLines, Link2, HeartHandshake, FlaskConical } from 'lucide-react';
+import VanishModal from './VanishModal';
+import { EyeOff, AudioLines, Link2, HeartHandshake, FlaskConical, Volume2, VolumeX, ShieldAlert, Sparkles } from 'lucide-react';
 
 /* Rotating word that cycles a list of translated synonyms */
 function RotatingLex({ words }) {
@@ -185,8 +186,11 @@ function Faq({ dict }) {
 export default function ConstellationStage({ dict, locale }) {
   const view = useAppStore((s) => s.view);
   const setView = useAppStore((s) => s.setView);
+  const soundMuted = useAppStore((s) => s.soundMuted);
+  const toggleSound = useAppStore((s) => s.toggleSound);
   const [loginOpen, setLoginOpen] = useState(false);
   const [fusionOpen, setFusionOpen] = useState(false);
+  const [vanishOpen, setVanishOpen] = useState(false);
 
   const navItems = [
     { id: 'hero', label: dict.nav.home },
@@ -202,28 +206,59 @@ export default function ConstellationStage({ dict, locale }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
-      const idx = navItems.findIndex((n) => n.id === view);
+      const ids = ['hero', 'features', 'bond', 'voice', 'quiz', 'waitlist', 'faq'];
+      const idx = ids.indexOf(view);
+      if (idx === -1) return;
       if (e.key === 'ArrowRight') {
-        setView(navItems[(idx + 1) % navItems.length].id);
+        setView(ids[(idx + 1) % ids.length]);
       } else if (e.key === 'ArrowLeft') {
-        setView(navItems[(idx - 1 + navItems.length) % navItems.length].id);
+        setView(ids[(idx - 1 + ids.length) % ids.length]);
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [view]);
+  }, [view, setView]);
 
   return (
     <>
       <BrandMark />
       <Starfield />
       <Aurora view={view} />
-      <button
-        onClick={() => setLoginOpen(true)}
-        className="fixed top-3 right-4 z-[45] glass rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-white/70 transition hover:text-[#5eead4]"
-      >
-        {dict?.login?.submit ?? 'Sign in'}
-      </button>
+      <div className="fixed top-3 right-4 z-[45] flex items-center gap-2">
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('open-astraea'))}
+          aria-label="Open Astraea Sovereign AI Concierge"
+          title="Astraea Sovereign AI"
+          className="flex items-center gap-1.5 glass rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5eead4] hover:brightness-125 transition border border-[#5eead4]/30 shadow-[0_0_12px_rgba(94,234,212,0.2)]"
+        >
+          <Sparkles size={12} className="text-[#5eead4] animate-pulse" />
+          <span className="hidden sm:inline">Astraea</span>
+        </button>
+        <button
+          onClick={toggleSound}
+          aria-label={soundMuted ? 'Unmute soundscape' : 'Mute soundscape'}
+          title={soundMuted ? 'Unmute' : 'Mute'}
+          className={`grid h-8 w-8 place-items-center rounded-full glass transition ${
+            soundMuted ? 'text-rose-400' : 'text-[#5eead4] hover:brightness-125'
+          }`}
+        >
+          {soundMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+        </button>
+        <button
+          onClick={() => setVanishOpen(true)}
+          aria-label="Cryptographic Vanish Proof"
+          title="Cryptographic Vanish"
+          className="grid h-8 w-8 place-items-center rounded-full glass text-rose-300/80 transition hover:text-rose-300 hover:border-red-500/40"
+        >
+          <ShieldAlert size={15} />
+        </button>
+        <button
+          onClick={() => setLoginOpen(true)}
+          className="glass rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-white/70 transition hover:text-[#5eead4]"
+        >
+          {dict?.login?.submit ?? 'Sign in'}
+        </button>
+      </div>
       <button
         onClick={() => setFusionOpen(true)}
         className="fixed bottom-24 left-4 z-[45] glass rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ffd7a1] transition hover:brightness-125"
@@ -236,15 +271,20 @@ export default function ConstellationStage({ dict, locale }) {
 
       <nav
         aria-label="Primary"
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 glass rounded-full px-3 py-2 flex gap-1 overflow-x-auto max-w-[92vw]"
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 glass rounded-full px-3 py-2 flex gap-1.5 overflow-x-auto max-w-[92vw] shadow-2xl border border-white/10"
       >
         {navItems.map((n) => (
           <button
             key={n.id}
             onClick={() => setView(n.id)}
             aria-current={view === n.id ? 'page' : undefined}
-            className={`dock-btn whitespace-nowrap text-xs px-3 py-1.5 rounded-full ${view === n.id ? 'bg-[#a78bfa] text-[#04060f] font-semibold' : 'text-white/70'
-              }`}
+            className={`dock-btn whitespace-nowrap text-xs px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+              view === n.id
+                ? 'bg-gradient-to-r from-[#a78bfa] to-[#818cf8] text-[#04060f] font-semibold shadow-[0_0_15px_rgba(167,139,250,0.5)]'
+                : n.id === 'waitlist'
+                ? 'border border-[#5eead4]/60 bg-gradient-to-r from-[#5eead4]/15 to-[#a78bfa]/15 text-[#5eead4] font-medium hover:bg-[#5eead4]/25 hover:shadow-[0_0_12px_rgba(94,234,212,0.3)]'
+                : 'text-white/70 hover:text-white hover:bg-white/5'
+            }`}
           >
             {n.label}
           </button>
@@ -271,6 +311,7 @@ export default function ConstellationStage({ dict, locale }) {
 
       <FusionLab open={fusionOpen} onClose={() => setFusionOpen(false)} />
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} dict={dict} />
+      <VanishModal open={vanishOpen} onClose={() => setVanishOpen(false)} />
     </>
   );
 }

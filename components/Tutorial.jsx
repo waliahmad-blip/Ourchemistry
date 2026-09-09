@@ -24,7 +24,7 @@ export default function Tutorial({ page, dict }) {
       if (!localStorage.getItem(seenKey(page))) t = setTimeout(() => setMode('ghost'), 900);
     } catch {}
     return () => clearTimeout(t);
-  }, [page]);
+  }, [page, info?.title]);
 
   useEffect(() => {
     if (mode !== 'ghost') return;
@@ -37,10 +37,15 @@ export default function Tutorial({ page, dict }) {
 
   useEffect(() => {
     if (mode !== 'pinned') return;
-    const esc = (e) => e.key === 'Escape' && close();
+    const esc = (e) => {
+      if (e.key === 'Escape') {
+        setMode(null);
+        try { localStorage.setItem(seenKey(page), '1'); } catch {}
+      }
+    };
     window.addEventListener('keydown', esc);
     return () => window.removeEventListener('keydown', esc);
-  }, [mode]);
+  }, [mode, page]);
 
   const markSeen = () => { try { localStorage.setItem(seenKey(page), '1'); } catch {} };
   const close = () => { setMode(null); markSeen(); };
